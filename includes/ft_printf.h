@@ -16,6 +16,15 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
+typedef struct	s_struct
+{
+char			*format;
+int				pos;	// position where we are at
+
+
+}				t_struct;
+
+
 
 int		ft_printf(const char *format, ...);
 
