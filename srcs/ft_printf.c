@@ -1,30 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 14:57:30 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/03/07 14:57:31 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/03/07 15:24:13 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/03/07 15:24:15 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
 
-# include "../libft/libft.h"
-# include <stdarg.h>
-
-
-int		ft_printf(const char *format, ...);
-
-
-
-
-
-
-
-
-
-#endif
