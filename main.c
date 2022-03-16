@@ -13,3 +13,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+
+int main()
+{
+    int i = 005;
+    printf("Testi: %i\n", i);
+
+    return 0;
+}

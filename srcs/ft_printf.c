@@ -21,26 +21,32 @@ int	ft_printf(const char *format, ...)
 	//if *format is NULL >> return something
 	d = (t_data)malloc(sizeof(d_data));
 	if (d == NULL)
-		return (0);	//check if this is right error code or not
-	// bzero every value of struct ??
+		return (0);
+	set_struct(d);
 	va_start(ap, format);
 	ret = //action happens here
 	va_end(ap);
-	//write here or inside the function?
 	//free what must to be freed
 	return (ret);
 }
 
 int second(const char *format, va_list ap, t_struct data)
 {
-	while (format[pos] != '\0') //set pos to 0
+	while (format[d->pos] != '\0')
 	{
-		if not % >> write
-		else if %
-			check next
-			if FLAG //ft_strchr?
-			if not-FLAG
-			if '\0'
+		if (format[d->pos] != '%')
+			write(1, &format[d->pos], 1);
+		else // == '%'
+		{
+			d->pos++;
+			flags(format, data);
+			min_width(format, data);
+			presicion(format, data);
+			modifiers(format, data);
+			conversion(format, ap, data);
 
+		}
+
+		d->pos++;
 	}
 }

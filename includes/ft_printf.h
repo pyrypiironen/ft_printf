@@ -16,10 +16,24 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-typedef struct	s_struct
+# define FLAGS "#0-+ "
+
+typedef struct	    s_struct
 {
-char			*format;
-int				pos;	// position where we are at
+    int				pos;	    // position where we are at
+    
+    //              FLAGS
+    int             hash;
+    int             zero;
+    int             plus;
+    int             minus;
+    int             space;
+    //              MODIFIERS
+    int             mod_h;
+    int             mod_hh;
+    int             mod_l;
+    int             mod_ll;
+    int             mod_L;
 
 
 }				t_struct;
@@ -27,7 +41,12 @@ int				pos;	// position where we are at
 
 
 int		ft_printf(const char *format, ...);
+void    flags(const char *format, t_struct data);
+void    min_width(const char *format, t_struct data);
+void    precision(const char *format, t_struct data);
 
+void    set_struct(t_struct *d);
+void    reset_struct(t_struct *d);
 
 
 
