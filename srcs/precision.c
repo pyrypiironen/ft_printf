@@ -6,6 +6,5 @@
 
 void    precision(const char *format, t_struct data)
 {
-    (void)format;
-    (void)data;
+      if (format[d->pos] == '.')
 }

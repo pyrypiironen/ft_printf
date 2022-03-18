@@ -3,7 +3,7 @@
 
 #include "../includes/ft_printf.h"
 
-void    flags(const char *format, t_struct data)
+void    flags(const char *format, t_struct d)
 {   
     while (ft_strchr(FLAGS, format[d->pos]) != NULL)
     {
@@ -19,6 +19,6 @@ void    flags(const char *format, t_struct data)
             d->space = 1;
         d->pos++;
     }
-    if (f->minus == 1 || f->plus == 1)
+    if (f->plus == 1)
         f->space = 0;
 }

@@ -16,21 +16,24 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 
-# define FLAGS "#0-+ "
-# define WIDTH
+# define CONVERSION "cspdiouxXf%"
+# define FLAGS      "#0-+ "
+# define SPECIFIERS "#0-+ .*0123456789hlL" // z ?
 
 
 typedef struct	    s_struct
 {
-    int				pos;	    // position where we are at
-    int             
-    
+    //              POSITION on format string
+    int				pos;
     //              FLAGS
     int             hash;
     int             zero;
     int             plus;
     int             minus;
     int             space;
+    //              WIDTH
+    int             width;
+    int             padding;
     //              MODIFIERS
     int             mod_h;
     int             mod_hh;
@@ -44,11 +47,13 @@ typedef struct	    s_struct
 
 
 int		ft_printf(const char *format, ...);
-void    flags(const char *format, t_struct data);
-//int     is_printable((const char *format, t_struct data);
-void    min_width(const char *format, t_struct data);
+int     read_format(const char *format, va_list ap, t_struct d);
+
+int     is_conversion(const char *format, t_struct d);
+void    flags(const char *format, t_struct d);
+void    width(const char *format, t_struct d);
 void    precision(const char *format, t_struct data);
-int     read_format(const char *format, va_list ap, t_struct data);
+
 void    set_struct(t_struct *d);
 void    reset_struct(t_struct *d);
 

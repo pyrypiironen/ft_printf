@@ -30,7 +30,7 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int read_format(const char *format, va_list ap, t_struct data)
+int read_format(const char *format, va_list ap, t_struct d)
 {
 	while (format[d->pos] != '\0')
 	{
@@ -38,17 +38,20 @@ int read_format(const char *format, va_list ap, t_struct data)
 			write(1, &format[d->pos], 1);
 		else // == '%'
 		{
-			is_conversion(format, data);
 			d->pos++;
-			flags(format, data);
-			min_width(format, data);
-			presicion(format, data);
-			modifiers(format, data);
-			conversion(format, ap, data);
+			if (is_conversion(format, data) == 1);
+			{
+				while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
+				{
+					flags(format, data);
+					min_width(format, data);
+					presicion(format, data);
+					modifiers(format, data);
+				}
+				conversion(format, ap, data);
+			}
 
 		}
-
-		d->pos++;
 	}
 	return 0;
 }
