@@ -16,8 +16,8 @@
 
 int main()
 {
-    int i = 005;
-    printf("Testi: %i\n", i);
+    int i = 5;
+    printf("Testi: % -10%\n", i);
 
     return 0;
 }

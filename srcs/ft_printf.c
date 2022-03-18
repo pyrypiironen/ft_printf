@@ -24,13 +24,13 @@ int	ft_printf(const char *format, ...)
 		return (0);
 	set_struct(d);
 	va_start(ap, format);
-	ret = //action happens here
+	ret = read_format(format, ap, data);
 	va_end(ap);
 	//free what must to be freed
 	return (ret);
 }
 
-int second(const char *format, va_list ap, t_struct data)
+int read_format(const char *format, va_list ap, t_struct data)
 {
 	while (format[d->pos] != '\0')
 	{
@@ -38,6 +38,7 @@ int second(const char *format, va_list ap, t_struct data)
 			write(1, &format[d->pos], 1);
 		else // == '%'
 		{
+			is_conversion(format, data);
 			d->pos++;
 			flags(format, data);
 			min_width(format, data);
@@ -49,4 +50,5 @@ int second(const char *format, va_list ap, t_struct data)
 
 		d->pos++;
 	}
+	return 0;
 }

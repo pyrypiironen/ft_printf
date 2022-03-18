@@ -17,10 +17,13 @@
 # include <stdarg.h>
 
 # define FLAGS "#0-+ "
+# define WIDTH
+
 
 typedef struct	    s_struct
 {
     int				pos;	    // position where we are at
+    int             
     
     //              FLAGS
     int             hash;
@@ -42,9 +45,10 @@ typedef struct	    s_struct
 
 int		ft_printf(const char *format, ...);
 void    flags(const char *format, t_struct data);
+//int     is_printable((const char *format, t_struct data);
 void    min_width(const char *format, t_struct data);
 void    precision(const char *format, t_struct data);
-
+int     read_format(const char *format, va_list ap, t_struct data);
 void    set_struct(t_struct *d);
 void    reset_struct(t_struct *d);
 
