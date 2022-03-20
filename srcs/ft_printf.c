@@ -19,10 +19,10 @@ int	ft_printf(const char *format, ...)
 	int			ret;
 
 	//if *format is NULL >> return something
-	d = (t_data)malloc(sizeof(d_data));
-	if (d == NULL)
+	data = (t_struct*)malloc(sizeof(t_struct));
+	if (data == NULL)
 		return (0);
-	set_struct(d);
+	set_struct(data);
 	va_start(ap, format);
 	ret = read_format(format, ap, data);
 	va_end(ap);
@@ -30,7 +30,7 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int read_format(const char *format, va_list ap, t_struct d)
+int read_format(const char *format, va_list ap, t_struct *d)
 {
 	while (format[d->pos] != '\0')
 	{
@@ -39,19 +39,18 @@ int read_format(const char *format, va_list ap, t_struct d)
 		else // == '%'
 		{
 			d->pos++;
-			if (is_conversion(format, data) == 1);
+			if (is_conversion(format, d) == 1)
 			{
-				while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
-				{
-					flags(format, data);
-					min_width(format, data);
-					presicion(format, data);
-					modifiers(format, data);
-				}
-				conversion(format, ap, data);
+				flags(format, d);
+				width(format, d);
+				precision(format, d);
+				modifiers(format, d);
+				conversion(format, ap, d);
 			}
-
+			else
+				d->pos--;
 		}
+		d->pos++;
 	}
 	return 0;
 }

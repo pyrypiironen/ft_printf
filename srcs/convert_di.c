@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_conversion.c                                    :+:      :+:    :+:   */
+/*   convert_di.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/20 16:35:31 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/03/20 16:35:33 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/03/20 16:48:13 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/03/20 16:48:14 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int is_conversion(const char *format, t_struct *d)
+void	convert_di(const char *format, va_list ap, t_struct *d)
 {
-	int save;
-
-	save = d->pos;
-	while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
-		d->pos++;
-	if (ft_strchr(CONVERSION, format[d->pos]) != NULL)
-		return (1);
-	else
-	{
-		d->pos = save;
-		return (0);
-	}
+	ft_putendl("Hello world");
 }
