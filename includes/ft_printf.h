@@ -53,7 +53,9 @@ void	flags(const char *format, t_struct *d);
 void	width(const char *format, t_struct *d);
 void	precision(const char *format, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
+
 void	conversion(const char *format, va_list ap, t_struct *d);
+
 void	convert_di(const char *format, va_list ap, t_struct *d);
 
 void	set_struct(t_struct *d);

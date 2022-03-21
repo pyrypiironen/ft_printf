@@ -19,7 +19,7 @@ int main()
     int i = 2147483647;
     int j = 5;
 
-    printf("Testi: %.5d :end\n", j);
+    printf("Testi: %+5d :end\n", j);
 
     return 0;
 }
