@@ -10,53 +10,42 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprinf.a
+NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
-
-HEADER = include/ft_printf.h
-
-INCLUDES = -I includes -I .libft
+INCLUDES = -I includes -I libft
 
 LIBFT = libft/libft.a
 LIBFT_DIR = ./libft/
-LIBFT_OBJS = ./libft/*.o
 
 SRCS_DIR = srcs/
-OBJS_DIR = obj/
+OBJS_DIR = objs/
 
-SRCS = $(addprefix $(SRC_DIR),
+OBJS = $(SRCS: .c=.o)
+
+# OBJS = $(addprefix $(OBJS_DIR), $(SRCS:srcs/%.c=%.o))
+# #.c files from srcs/ creates .o files to objs/
+
+SRCS = $(addprefix $(SRCS_DIR), *.c)
 
 
 all: $(NAME)
 
-$(NAME): $(OBJS_DIR)
+$(NAME):
 	@make -s -C $(LIBFT_DIR)
-# @cp $(LIBFT) ./$(NAME)
-
-
-
+	@cp $(LIBFT) ./$(NAME)
+	gcc $(FLAGS) $(SRCS) -c $(INCLUDES)
+	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
-$(OBJS_DIR):
-	@mkdir $@
-
 clean:
-
+	rm -f *.o
 	@make clean -s -C $(LIBFT_DIR)
 
-fclean:
-
+fclean: clean
+	rm -f $(NAME) *.gch a.out
 	@make fclean -s -C $(LIBFT_DIR)
 
 re: fclean all
-
-
-
-
-
-
-
-
 
 .PHONY: all clean fclean re
