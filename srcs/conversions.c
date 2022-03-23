@@ -30,3 +30,23 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 	// 	convert_f(format, ap, d);
 	d->pos++;		// ??
 }
+
+// void	conversion_di(const char *format, va_list ap, t_struct *d)
+// {
+// 	if (d->mod_h == 1)
+// 		convert_hd(format, ap, d);
+// 	else if (d->mod_hh == 1)
+// 		convert_hhd(format, ap, d);
+// 	else if (d->mod_l == 1)
+// 		convert_ld(format, ap, d);
+// 	else if (d->mod_ll == 1)
+// 		convert_lld(format, ap, d);
+// 	else if (d->mod_L == 1)
+// 	{
+// 		ft_putendl("\n\nError: Invalid length modifier(L).");
+// 		exit(0);
+// 	}
+// 	else
+// 		convert_d(format, ap, d);
+// }
+

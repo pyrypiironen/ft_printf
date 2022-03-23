@@ -12,15 +12,15 @@
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long n)
 {
 	int		i;
-	char	arr[20];
+	char	arr[24];
 	long	k;
 
 	i = 0;
 	k = n;
-	ft_bzero(arr, 20);
+	ft_bzero(arr, 24);
 	if (n < 0)
 		k = k * -1;
 	arr[i] = k % 10 + '0';

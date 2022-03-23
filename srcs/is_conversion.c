@@ -20,10 +20,10 @@ int is_conversion(const char *format, t_struct *d)
 	while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
 		d->pos++;
 	if (ft_strchr(CONVERSION, format[d->pos]) != NULL)
-		return (1);
-	else
 	{
 		d->pos = save;
-		return (0);
+		return (1);
 	}
+	else
+		return (0);
 }

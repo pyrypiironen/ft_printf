@@ -28,7 +28,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_atoi(const char *str);
-char	*ft_itoa(int n);
+char	*ft_itoa(long long n);
 void	ft_bzero(void *s, size_t n);
 int		ft_countwords(const char *str);
 char	**ft_freearray(char **arr, int size);

@@ -16,7 +16,7 @@ FLAGS = -Wall -Wextra -Werror
 
 HEADER = include/ft_printf.h
 
-INCLUDES = -I includes -I .libft/libft.h
+INCLUDES = -I includes -I .libft
 
 LIBFT = libft/libft.a
 LIBFT_DIR = ./libft/

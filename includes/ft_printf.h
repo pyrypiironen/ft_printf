@@ -41,6 +41,9 @@ typedef struct		s_struct
 	int				mod_l;
 	int				mod_ll;
 	int				mod_L;
+	//				PRINTING
+	size_t			input_len;
+	size_t			print_len;
 }					t_struct;
 
 
@@ -55,8 +58,10 @@ void	precision(const char *format, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
 
 void	conversion(const char *format, va_list ap, t_struct *d);
-
 void	convert_di(const char *format, va_list ap, t_struct *d);
+
+size_t	print_len(t_struct *d, int input_len);
+void	fill_print(t_struct *d, char *print);
 
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
