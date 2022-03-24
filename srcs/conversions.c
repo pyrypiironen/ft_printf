@@ -28,7 +28,6 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 	// 	convert_s(format, ap, d);
 	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
 	// 	convert_f(format, ap, d);
-	d->pos++;		// ??
 }
 
 // void	conversion_di(const char *format, va_list ap, t_struct *d)

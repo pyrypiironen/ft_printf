@@ -11,12 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void	convert_di(const char *format, va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;
-	size_t		i;
+	int			i;
 	long long	arg;
 
 	(void)format;
@@ -24,8 +25,8 @@ void	convert_di(const char *format, va_list ap, t_struct *d)
 	arg = (long long)va_arg(ap, int);
 	input = ft_itoa(arg); 		//itoa allocates memory.
 	d->input_len = ft_strlen(input);
-	d->print_len = print_len(d, (int)d->input_len);
-	print = (char *)malloc(sizeof(*print) * d->input_len + 1);
+	d->print_len = print_len(d, d->input_len);
+	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
 		exit(0);
 	print[d->print_len] = '\0';
@@ -36,22 +37,18 @@ void	convert_di(const char *format, va_list ap, t_struct *d)
 		d->input_len--;
 		d->print_len--;
 	}
-	//if	plus	add '+'
-	//if	space	add ' '
+	plant_plus_space(d, print);
+	//adjust_left(d, print);
 	//if	zero	padding		--> zero and minus flags cant both be there
 	//if	minus	move to left
 
-	//precision
 
-	//padding 5 and plus is wid-6
-	//spaces 5 and plus is wid-5
-	//--> plus can override space, but not padding
 
 	//what about minus and padding?
-	
+	ft_putstr(print);
 }
 
-size_t	print_len(t_struct *d, int len)
+int	print_len(t_struct *d, int len)
 {
 	int	flag;
 
@@ -64,8 +61,8 @@ size_t	print_len(t_struct *d, int len)
 	if (d->width > len)
 		len = d->width;
 	if (d->padding + flag > len)
-		len = d->padding;
-	return (size_t)(len);
+		len = d->padding + flag;
+	return (len);
 	//wid (plus and space override the block)
 	//padding + plus or space
 	//len + plus or space
@@ -74,18 +71,21 @@ size_t	print_len(t_struct *d, int len)
 
 void	fill_print(t_struct *d, char *print)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = d->width - 1;
 	j = d->print_len - 1;
 	while (i >= 0 )
 	{
-		print[j] = ' ';
+		if(d->padding == -1 && d->zero == 1)
+			print[j] = '0';
+		else
+			print[j] = ' ';
 		i--;
 		j--;
 	}
-	i = d->width - 1;
+	i = d->padding - 1;
 	j = d->print_len - 1;
 	while (i >= 0 )
 	{
@@ -94,6 +94,32 @@ void	fill_print(t_struct *d, char *print)
 		j--;
 	}
 }
+
+void	plant_plus_space(t_struct *d, char *print)
+{
+	int	i;
+
+	//plus
+	i = d->print_len;
+	if (d->plus == 1)
+	{
+		while(print[i] == '0')
+			i--;
+		print[i] = '+';
+	}
+	//space
+	else if (d->space == 1)
+	{
+		while(print[i] == '0')
+			i--;
+		print[i] = ' ';
+	}
+	d->print_len--;
+}
+
+
+
+
 
 
 

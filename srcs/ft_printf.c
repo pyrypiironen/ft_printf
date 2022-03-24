@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 int	ft_printf(const char *format, ...)
 {
@@ -52,5 +53,10 @@ int read_format(const char *format, va_list ap, t_struct *d)
 		}
 		d->pos++;
 	}
+
+	// printf("\nPadding: %d\n", d->padding);
+	// printf("Width: %d\n", d->width);
+	// printf("Space: %d\n", d->space);
+	// printf("Plus: %d\n\n", d->plus);
 	return 0;
 }
