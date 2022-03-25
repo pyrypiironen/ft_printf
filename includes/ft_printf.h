@@ -44,6 +44,7 @@ typedef struct		s_struct
 	//				PRINTING
 	int				input_len;
 	int				print_len;
+	long long		arg;
 }					t_struct;
 
 
