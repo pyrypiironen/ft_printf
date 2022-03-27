@@ -36,7 +36,10 @@ int read_format(const char *format, va_list ap, t_struct *d)
 	while (format[d->pos] != '\0')
 	{
 		if (format[d->pos] != '%')
+		{
 			write(1, &format[d->pos], 1);
+			d->res++;
+		}
 		else // == '%'
 		{
 			d->pos++;
@@ -52,11 +55,12 @@ int read_format(const char *format, va_list ap, t_struct *d)
 				d->pos--;
 		}
 		d->pos++;
+		reset_struct(d);
 	}
 
 	// printf("\nPadding: %d\n", d->padding);
 	// printf("Width: %d\n", d->width);
 	// printf("Space: %d\n", d->space);
 	// printf("Plus: %d\n\n", d->plus);
-	return 0;
+	return (d->res);
 }

@@ -30,4 +30,9 @@ void	flags(const char *format, t_struct *d)
 	}
 	if (d->plus == 1)
 		d->space = 0;
+	if (d->minus == 1 && d->zero == 1)
+	{
+		ft_putendl("error: flag '0' is ignored when flag '-' is present");
+		exit (-1);
+	}
 }

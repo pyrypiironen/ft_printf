@@ -11,18 +11,16 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-void	convert_di(const char *format, va_list ap, t_struct *d)
+void	convert_di(va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;
 	int			i;
 
-	(void)format;
 	i = 0;
-	d->arg = (long long)va_arg(ap, int);
-	input = ft_itoa(d->arg); 		//itoa allocates memory.
+	read_arg(d, ap);
+	input = ft_itoa(d->arg);
 	d->input_len = ft_strlen(input);
 	d->print_len = print_len(d, d->input_len);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
@@ -36,15 +34,11 @@ void	convert_di(const char *format, va_list ap, t_struct *d)
 		d->input_len--;
 		d->print_len--;
 	}
-	plant_plus_space(d, print);
-	//adjust_left(d, print);
-	//if	zero	padding		--> zero and minus flags cant both be there
-	//if	minus	move to left
-
-
-
-	//what about minus and padding?
+	plant_plus_space_minus(d, print);
 	ft_putstr(print);
+	d->res += ft_strlen(print); 
+	free(input);
+	free(print);
 }
 
 int	print_len(t_struct *d, int len)
@@ -77,7 +71,7 @@ void	fill_print(t_struct *d, char *print)
 	j = d->print_len - 1;
 	while (i >= 0 )
 	{
-		if(d->padding == -1 && d->zero == 1)
+		if(d->padding == -1 && d->zero == 1 && d->minus == 0)
 			print[j] = '0';		//set flag 0
 		else
 			print[j] = ' ';
@@ -94,7 +88,7 @@ void	fill_print(t_struct *d, char *print)
 	}
 }
 
-void	plant_plus_space(t_struct *d, char *print)
+void	plant_plus_space_minus(t_struct *d, char *print)
 {
 	int	i;
 	//plus
@@ -118,6 +112,48 @@ void	plant_plus_space(t_struct *d, char *print)
 		i--;
 	if (d->arg < 0)
 	print[i] = '-';
+	adjust_left(d, print);
+}
+
+void	adjust_left(t_struct *d ,char *print)
+{
+	int	i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (d->space == 1 && print[0] == ' ' && d->arg >= 0)
+		j++;
+	if (d->minus == 0)
+		return ;
+	while (1)
+	{
+		while (print[i] == ' ')
+			i++;
+		if (i == 0 + j)
+			return ;
+		while (print[i] != '\0')
+		{
+			print[i - 1] = print[i];
+			print[i] = ' ';
+			i++;
+		}
+		i = 0 + j;
+	}
+}
+
+void	read_arg(t_struct *d, va_list ap)
+{
+	// if (d->mod_h == 1)
+	// 	d->arg = (long long)va_arg(ap, int);
+	// else if (d->mod_hh == 1)
+	// 	d->arg = (long long)va_arg(ap, int);
+	if (d->mod_l == 1)
+		d->arg = (long long)va_arg(ap, long);
+	else if (d->mod_ll == 1)
+		d->arg = (long long)va_arg(ap, long long);
+	else
+		d->arg = (long long)va_arg(ap, int);
 }
 
 
