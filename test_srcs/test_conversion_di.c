@@ -17,7 +17,7 @@ void	test_conversion_di()
 	int a = 207;
 	int b = -207;
 	short h = 207;
-	//signed char hh = 207;
+	signed char hh = 'b';
 	long l = 2147483647;					//max long, same as max int
 	long long ll = 9223372036854775807; 	//max long long
 	int real_return;
@@ -215,11 +215,11 @@ void	test_conversion_di()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	// ft_putendl("\nInput: %hhd");
-	// my_return = ft_printf("My ft_printf: %hhd $\n", hh);
-	// real_return = printf("Real  printf: %hhd $\n", hh);
-	// if(my_return != real_return)
-	// 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+	ft_putendl("\nInput: %hhd");
+	my_return = ft_printf("My ft_printf: %hhd $\n", hh);
+	real_return = printf("Real  printf: %hhd $\n", hh);
+	if(my_return != real_return)
+	 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %ld");
 	my_return = ft_printf("My ft_printf: %ld $\n", l);

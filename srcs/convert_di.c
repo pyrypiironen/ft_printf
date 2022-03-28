@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h> //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void	convert_di(va_list ap, t_struct *d)
 {
@@ -46,20 +47,26 @@ int	print_len(t_struct *d, int len)
 	int	flag;
 
 	flag = 0;
+	// plus or space with non-negative number needs one more block
 	if ((d->plus == 1 || d->space == 1) && d->arg >= 0)
 	{
 		flag = 1;
 		len++;
 	}
+	// width (plus and space override the block)
 	if (d->width > len)
 		len = d->width;
+	// padding plus one (to plus or space flag)
 	if (d->padding + flag > len)
 		len = d->padding + flag;
+	// if padding fills the string, it needs one more block to minus when negative
+	if (d->padding >= d->width && d->padding >= d->input_len && d->arg < 0)
+		len++;
+	// longest is width we need to allocate 
 	return (len);
-	//wid (plus and space override the block)
-	//padding + plus or space
-	//len + plus or space
-	//longest is width we need to print
+
+
+
 }
 
 void	fill_print(t_struct *d, char *print)
@@ -108,7 +115,7 @@ void	plant_plus_space_minus(t_struct *d, char *print)
 	}
 	//minus
 	i = d->print_len;
-	while (print[i] != ' ')
+	while (print[i] != ' ' && print[i] > 0)
 		i--;
 	if (d->arg < 0)
 	print[i] = '-';

@@ -61,13 +61,16 @@ void	precision(const char *format, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
 
 void	conversion(const char *format, va_list ap, t_struct *d);
-void	convert_di(va_list ap, t_struct *d);
 
+void	convert_di(va_list ap, t_struct *d);
 void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d, int input_len);
 void	fill_print(t_struct *d, char *print);
 void	plant_plus_space_minus(t_struct *d, char *print);
 void	adjust_left(t_struct *d ,char *print);
+
+void	convert_o(va_list ap, t_struct *d);
+int		itobase(int i);
 
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);

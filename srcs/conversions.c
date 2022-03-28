@@ -16,8 +16,8 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 {
 	if (format[d->pos] == 'd' || format[d->pos] == 'i')
 		convert_di(ap, d);
-	// else if (format[d->pos] == 'o')
-	// 	convert_o(format, ap,  d);
+	else if (format[d->pos] == 'o')
+		convert_o(ap,  d);
 	// else if (format[d->pos] == 'u')
 	// 	convert_u(format, ap, d);
 	// else if (format[d->pos] == 'x' || format[d->pos] == 'X')

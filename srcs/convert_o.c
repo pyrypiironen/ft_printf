@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.h                                             :+:      :+:    :+:   */
+/*   convert_o.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/24 18:46:49 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/03/24 18:46:50 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/03/28 14:48:28 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/03/28 14:48:29 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#include "../includes/ft_printf.h"
+#include <stdio.h> //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-# include "../includes/ft_printf.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <string.h>
+void	convert_o(va_list ap, t_struct *d)
+{
+	(void)ap;
+	(void)d;
+}
 
-void	test_conversion_di();
-void	test_conversion_o();
+int	itobase(int i)
+{
+	int	remainder;
+	int factor;
+	int	res;
 
+	factor = 1;
+	res = 0;
+	while (i != 0)
+	{
+		remainder = i % 8;
+		if (remainder > 0)
+			res += factor * remainder;
+		factor = factor * 10;
+		i = i / 8;
+	}
+	return (res);
+}
 
-
-#endif
