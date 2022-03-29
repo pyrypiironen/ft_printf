@@ -14,10 +14,12 @@
 
 char	*ft_itoa(long long n)
 {
-	int		i;
-	char	arr[24];
-	long	k;
+	int			i;
+	char		arr[24];
+	long long	k;
 
+	if (n < -9223372036854775807)
+		return(ft_strdup("-9223372036854775808"));
 	i = 0;
 	k = n;
 	ft_bzero(arr, 24);

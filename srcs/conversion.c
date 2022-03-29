@@ -12,18 +12,20 @@
 
 #include "../includes/ft_printf.h"
 
-int is_conversion(const char *format, t_struct *d)
+void	conversion(const char *format, va_list ap, t_struct *d)
 {
-	int save;
-
-	save = d->pos;
-	while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
-		d->pos++;
-	if (ft_strchr(CONVERSION, format[d->pos]) != NULL)
-	{
-		d->pos = save;
-		return (1);
-	}
-	else
-		return (0);
+	if (format[d->pos] == 'd' || format[d->pos] == 'i')
+		convert_di(ap, d);
+	else if (format[d->pos] == 'o')
+		convert_o(ap,  d);
+	else if (format[d->pos] == 'u')
+		convert_u(ap, d);
+	// else if (format[d->pos] == 'x' || format[d->pos] == 'X')
+	// 	convert_x(format, ap, d);
+	// else if (format[d->pos] == 'c')
+	// 	convert_c(format, ap, d);
+	// else if (format[d->pos] == 's')
+	// 	convert_s(format, ap, d);
+	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
+	// 	convert_f(format, ap, d);
 }

@@ -29,13 +29,8 @@ void	convert_di(va_list ap, t_struct *d)
 		exit(0);
 	print[d->print_len] = '\0';
 	fill_print(d, print);
-	while (d->input_len >= 0 && input[d->input_len] != '-')
-	{
-		print[d->print_len] = input[d->input_len];
-		d->input_len--;
-		d->print_len--;
-	}
-	plant_plus_space_minus(d, print);
+	plant_arg(d, print, input);
+	adjust_left(d, print);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 
 	free(input);
@@ -64,9 +59,6 @@ int	print_len(t_struct *d, int len)
 		len++;
 	// longest is width we need to allocate 
 	return (len);
-
-
-
 }
 
 void	fill_print(t_struct *d, char *print)
@@ -95,10 +87,18 @@ void	fill_print(t_struct *d, char *print)
 	}
 }
 
-void	plant_plus_space_minus(t_struct *d, char *print)
+void	plant_arg(t_struct *d, char *print, char  *input)
 {
 	int	i;
-	//plus
+
+	// arg (w/o minus if negative)
+	while (d->input_len >= 0 && input[d->input_len] != '-')
+	{
+		print[d->print_len] = input[d->input_len];
+		d->input_len--;
+		d->print_len--;
+	}
+	// plus
 	i = d->print_len;
 	if (d->plus == 1 && d->arg >= 0)
 	{
@@ -106,20 +106,19 @@ void	plant_plus_space_minus(t_struct *d, char *print)
 			i--;
 		print[i] = '+';
 	}
-	//space
+	// space
 	else if (d->space == 1)
 	{
 		while(print[i] == '0')
 			i--;
 		print[i] = ' ';
 	}
-	//minus
+	// minus
 	i = d->print_len;
 	while (print[i] != ' ' && print[i] > 0)
 		i--;
 	if (d->arg < 0)
 	print[i] = '-';
-	adjust_left(d, print);
 }
 
 void	adjust_left(t_struct *d ,char *print)
@@ -151,10 +150,6 @@ void	adjust_left(t_struct *d ,char *print)
 
 void	read_arg(t_struct *d, va_list ap)
 {
-	// if (d->mod_h == 1)
-	// 	d->arg = (long long)va_arg(ap, int);
-	// else if (d->mod_hh == 1)
-	// 	d->arg = (long long)va_arg(ap, int);
 	if (d->mod_l == 1)
 		d->arg = (long long)va_arg(ap, long);
 	else if (d->mod_ll == 1)

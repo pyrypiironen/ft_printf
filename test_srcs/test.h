@@ -17,9 +17,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include <limits.h>
 
 void	test_conversion_di();
 void	test_conversion_o();
+void	test_conversion_u();
 
 
 

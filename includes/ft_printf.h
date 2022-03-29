@@ -18,7 +18,7 @@
 
 # define CONVERSION	"cspdiouxXf%"
 # define FLAGS		"#0-+ "
-# define SPECIFIERS	"#0-+ .*0123456789hlL" // z ?
+# define SPECIFIERS	"#0-+ .*0123456789hlL"
 
 
 typedef struct		s_struct
@@ -45,6 +45,7 @@ typedef struct		s_struct
 	int				input_len;
 	int				print_len;
 	long long		arg;
+	unsigned long long	arg_o;
 	//				RETURN
 	int				res;
 }					t_struct;
@@ -65,12 +66,18 @@ void	conversion(const char *format, va_list ap, t_struct *d);
 void	convert_di(va_list ap, t_struct *d);
 void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d, int input_len);
-void	fill_print(t_struct *d, char *print);
-void	plant_plus_space_minus(t_struct *d, char *print);
-void	adjust_left(t_struct *d ,char *print);
+void	fill_print(t_struct *d, char *print); 					//diou
+void	plant_arg(t_struct *d, char *print, char *input);
+void	adjust_left(t_struct *d ,char *print);					//diou
 
 void	convert_o(va_list ap, t_struct *d);
-int		itobase(int i);
+void	read_arg_unsigned(t_struct *d, va_list ap);					//ou
+char	*ft_itoa_base(unsigned long long n, int base);				//ou
+int		print_len_unsigned(t_struct *d, int len);					//ou
+void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ou
+
+void	convert_u(va_list ap, t_struct *d);
+
 
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);

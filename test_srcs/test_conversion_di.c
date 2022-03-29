@@ -23,12 +23,20 @@ void	test_conversion_di()
 	int real_return;
 	int my_return;
 	int max = 2147483647;
+	long min_long = -2147483647 - 1;
+	long long min_long_long = -9223372036854775807 - 1;
 
 	ft_putendl(" * * * * * * * * * * SIGNED DESIMAL - Conversion di:  * * * * * * * * * *\n");
 
 	ft_putendl("Input: %d");
 	my_return = ft_printf("My ft_printf: %d $\n", a);
 	real_return = printf("Real  printf: %d $\n", a);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %03.2d");
+	my_return = ft_printf("My ft_printf: %03.2d $\n", -1);
+	real_return = printf("Real  printf: %03.2d $\n", -1);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
@@ -158,18 +166,42 @@ void	test_conversion_di()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	// MAX INT
-	ft_putendl("\n\n * * * * * Max int:  * * * * *");
+	// MAX AND MIN
+	ft_putendl("\n\n * * * * * Max and min:  * * * * *");
 
-	ft_putendl("\nInput: %d");
+	ft_putendl("\nInput: %d (max int)");
 	my_return = ft_printf("My ft_printf: %d $\n", max);
 	real_return = printf("Real  printf: %d $\n", max);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: % 8.4d");
+	ft_putendl("\nInput: % 8.4d (max int)");
 	my_return = ft_printf("My ft_printf: % 8.4d $\n", max);
 	real_return = printf("Real  printf: % 8.4d $\n", max);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %d (min int)");
+	my_return = ft_printf("My ft_printf: %d $\n", -2147483647 - 1);
+	real_return = printf("Real  printf: %d $\n", -2147483647 - 1);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %ld (min long)");
+	my_return = ft_printf("My ft_printf: %ld $\n", min_long);
+	real_return = printf("Real  printf: %ld $\n", min_long);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %lld (max long long)");
+	my_return = ft_printf("My ft_printf: %lld $\n", ll);
+	real_return = printf("Real  printf: %lld $\n", ll);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %lld (min long long)");
+	my_return = ft_printf("My ft_printf: %lld $\n", min_long_long);
+	real_return = printf("Real  printf: %lld $\n", min_long_long);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
@@ -270,10 +302,10 @@ void	test_conversion_di()
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	// ERROR TEST
-	ft_putendl("\n\n * * * * * Error test:  * * * * *");
+	// ft_putendl("\n\n * * * * * Error test:  * * * * *");
 
-	ft_putendl("\nInput: %-0d");
-	ft_printf("My ft_printf: %-0d $\n", a);
+	// ft_putendl("\nInput: %-0d");
+	// ft_printf("My ft_printf: %-0d $\n", a);
 	//printf("Real  printf: %-0d $\n", 0);
 
 }
