@@ -26,7 +26,7 @@ void	test_conversion_di()
 	long min_long = -2147483647 - 1;
 	long long min_long_long = -9223372036854775807 - 1;
 
-	ft_putendl(" * * * * * * * * * * SIGNED DESIMAL - Conversion di:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * SIGNED DESIMAL - Conversion di:  * * * * * * * * * *\n");
 
 	ft_putendl("Input: %d");
 	my_return = ft_printf("My ft_printf: %d $\n", a);

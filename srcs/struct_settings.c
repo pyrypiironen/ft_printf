@@ -14,6 +14,9 @@
 
 void	set_struct(t_struct *d)
 {
+	d->conv_o = 0;
+	d->conv_x = 0;
+	d->conv_X = 0;
 	d->pos = 0;     // do not copy to reset
 	d->hash = 0;
 	d->zero = 0;
@@ -32,6 +35,9 @@ void	set_struct(t_struct *d)
 
 void	reset_struct(t_struct *d)
 {
+	d->conv_o = 0;
+	d->conv_x = 0;
+	d->conv_X = 0;
 	d->hash = 0;
 	d->zero = 0;
 	d->plus = 0;

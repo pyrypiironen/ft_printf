@@ -22,7 +22,8 @@
 void	test_conversion_di();
 void	test_conversion_o();
 void	test_conversion_u();
-
-
+void	test_conversion_x();
+void	test_conversion_c();
+void	test_conversion_s();
 
 #endif

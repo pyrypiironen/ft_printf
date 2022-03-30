@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h> //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 void	convert_di(va_list ap, t_struct *d)
 {
@@ -23,7 +22,7 @@ void	convert_di(va_list ap, t_struct *d)
 	read_arg(d, ap);
 	input = ft_itoa(d->arg);
 	d->input_len = ft_strlen(input);
-	d->print_len = print_len(d, d->input_len);
+	d->print_len = print_len(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
 		exit(0);
@@ -37,27 +36,32 @@ void	convert_di(va_list ap, t_struct *d)
 	free(print);
 }
 
-int	print_len(t_struct *d, int len)
+int	print_len(t_struct *d)
 {
+	int	len;
 	int	flag;
 
+	len = d->input_len;
 	flag = 0;
-	// plus or space with non-negative number needs one more block
+	// Count space for '+' or ' ' flag if argument is non-negative.
+	// Also benchmark it by change int flag to 1.
 	if ((d->plus == 1 || d->space == 1) && d->arg >= 0)
 	{
 		flag = 1;
 		len++;
 	}
-	// width (plus and space override the block)
+	// If minimum field width is specified and is longer than len, use it
+	// as len. In this case '+' and ' ' flags don't need extra space.
 	if (d->width > len)
 		len = d->width;
-	// padding plus one (to plus or space flag)
+	// If padding (precision) is longer (with one extra box for '+' or
+	// ' ' flag if necessary) than len, use it as len.
 	if (d->padding + flag > len)
 		len = d->padding + flag;
-	// if padding fills the string, it needs one more block to minus when negative
+	// If padding (precision) fills the whole string and argument is negative,
+	// count space for minus sign.
 	if (d->padding >= d->width && d->padding >= d->input_len && d->arg < 0)
 		len++;
-	// longest is width we need to allocate 
 	return (len);
 }
 
@@ -66,18 +70,23 @@ void	fill_print(t_struct *d, char *print)
 	int	i;
 	int	j;
 
+	// String print will be filled by 0's if there is '0' flag,
+	// but not '-' flag and precision is not specified.
+	// Else it will be filled by spaces (' ').
 	i = d->width - 1;
 	j = d->print_len - 1;
 	while (i >= 0 )
 	{
 		if(d->padding == -1 && d->zero == 1 && d->minus == 0)
-			print[j] = '0';		//set flag 0
+			print[j] = '0';
 		else
 			print[j] = ' ';
 		i--;
 		j--;
 	}
-	i = d->padding - 1;		//set padding
+	// If precision is specified, string print is overwrite by defined
+	// amount of 0's.
+	i = d->padding - 1;
 	j = d->print_len - 1;
 	while (i >= 0 )
 	{

@@ -27,7 +27,7 @@ void	test_conversion_o()
 	int my_return;
 	unsigned int max = 4294967295;
 
-	ft_putendl(" * * * * * * * * * * UNSIGNED OCTAL - Conversion o:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * UNSIGNED OCTAL - Conversion o:  * * * * * * * * * *\n");
 
 	ft_putendl("Input: %o");
 	my_return = ft_printf("My ft_printf: %o $\n", a);

@@ -26,7 +26,7 @@ void	test_conversion_u()
 	int my_return;
 	unsigned int max = 4294967295;
 
-	ft_putendl(" * * * * * * * * * * UNSIGNED DESIMAL - Conversion u:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * UNSIGNED DESIMAL - Conversion u:  * * * * * * * * * *\n");
 
 	ft_putendl("Input: %u");
 	my_return = ft_printf("My ft_printf: %u $\n", a);

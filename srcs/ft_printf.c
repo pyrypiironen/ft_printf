@@ -45,6 +45,7 @@ int read_format(const char *format, va_list ap, t_struct *d)
 			d->pos++;
 			if (is_conversion(format, d) == 1)
 			{
+				// check_flag_errors(d);
 				flags(format, d);
 				width(format, d);
 				precision(format, d);
