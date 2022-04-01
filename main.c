@@ -12,6 +12,7 @@
 
 #include "test_srcs/test.h"
 
+
 int main()
 {
 	test_conversion_di();
@@ -20,8 +21,6 @@ int main()
 	test_conversion_x();
 	test_conversion_c();
 	test_conversion_s();
-
-
 
 
 	return 0;

@@ -1,3 +1,3 @@
-gcc -Wall -Wextra -Werror main.c srcs/*.c test_srcs/*.c -L./libft/ -lft
+gcc main.c test_srcs/*.c libftprintf.a 
 ./a.out
 rm a.out

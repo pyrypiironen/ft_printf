@@ -13,20 +13,15 @@
 NAME = libftprintf.a
 
 FLAGS = -Wall -Wextra -Werror
-INCLUDES = -I includes -I libft
+INCLUDES = -I includes
 
 LIBFT = libft/libft.a
 LIBFT_DIR = ./libft/
 
-SRCS_DIR = srcs/
+SRCS = srcs/*.c
+
+OBJS = *.o
 OBJS_DIR = objs/
-
-OBJS = $(SRCS: .c=.o)
-
-# OBJS = $(addprefix $(OBJS_DIR), $(SRCS:srcs/%.c=%.o))
-# #.c files from srcs/ creates .o files to objs/
-
-SRCS = $(addprefix $(SRCS_DIR), *.c)
 
 
 all: $(NAME)
@@ -34,17 +29,22 @@ all: $(NAME)
 $(NAME):
 	@make -s -C $(LIBFT_DIR)
 	@cp $(LIBFT) ./$(NAME)
-	gcc $(FLAGS) $(SRCS) -c $(INCLUDES)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@gcc $(FLAGS) -c $(SRCS) $(INCLUDES)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@mkdir $(OBJS_DIR)
+	@mv *.o $(OBJS_DIR)
+	@echo "Make successfully done."
 
 clean:
-	rm -f *.o
+	@rm -rf $(OBJS_DIR)
 	@make clean -s -C $(LIBFT_DIR)
+	@echo "Make clean successfully done."
 
 fclean: clean
-	rm -f $(NAME) *.gch a.out
+	@rm -f $(NAME) *.gch a.out
 	@make fclean -s -C $(LIBFT_DIR)
+	@echo "Make fclean successfully done."
 
 re: fclean all
 
