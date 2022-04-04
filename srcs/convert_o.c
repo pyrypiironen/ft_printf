@@ -27,9 +27,10 @@ void	convert_o(va_list ap, t_struct *d)
 		exit(0);
 	print[d->print_len] = '\0';
 	fill_print(d, print);
-	if (d->hash == 1 && d->minus == 0)
-		print[0] = '0';
+	//if (d->hash == 1 && d->minus == 0)
+	//	print[0] = '0';
 	plant_arg_unsigned(d, print, input);
+	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 
@@ -57,7 +58,10 @@ char	*ft_itoa_base(unsigned long long n, int base)
 	hexa = ft_strdup("0123456789ABCDEF");
 	ft_bzero(arr, 26);
 	if (n == 0)
+	{
+		free(hexa);
 		return (ft_strdup("0"));
+	}
 	while (n > 0)
 	{
 		arr[i] = hexa[n % base];
@@ -105,6 +109,9 @@ void	plant_arg_unsigned(t_struct *d, char *print, char  *input)
 	// Run over padding before plant prefix.
 	while (print[d->print_len] == '0')
 		d->print_len--;
+	// Make sure that there is space for prefix if necessary.
+	if (d->print_len < 1)
+		d->print_len = 1;
 	// Plant prefix if conversion type is 'x' or 'X', result is non-zero
 	// and there is '#' flag.
 	if (d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0)

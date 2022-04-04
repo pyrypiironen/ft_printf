@@ -15,7 +15,6 @@
 void	conversion(const char *format, va_list ap, t_struct *d)
 {
 	(void)format;
-
 	if (format[d->pos] == 'd' || format[d->pos] == 'i')
 		convert_di(ap, d);
 	else if (format[d->pos] == 'o')
@@ -34,6 +33,8 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 		convert_c(ap, d);
 	else if (format[d->pos] == 's')
 		convert_s(ap, d);
+	else if (format[d->pos] == '%')
+		convert_percent(d);
 	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
 	// 	convert_f(ap, d);
 }

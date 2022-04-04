@@ -25,5 +25,7 @@ void	test_conversion_u();
 void	test_conversion_x();
 void	test_conversion_c();
 void	test_conversion_s();
+void	test_percent();
+void	filechecker();
 
 #endif

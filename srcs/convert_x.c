@@ -30,6 +30,7 @@ void	convert_x(va_list ap, t_struct *d)
 	adjust_left(d, print);
 	if (d->conv_x == 1)
 		to_lowercase(print);
+	zero_precision_check_unsigned(print, d);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 
 	free(input);
@@ -48,3 +49,28 @@ void	to_lowercase(char *print)
 	}
 }
 
+void	zero_precision_check_unsigned(char *print, t_struct *d)
+{
+	int	i;
+
+	i = 0;
+	// If precision is zero and argument value is zero there is no
+	// visible print for argument value.
+	if (d->padding != 0 || d->arg_o != 0)
+		return ;
+	while (i < d->width)
+	{
+		print[i] = ' ';
+		i++;
+	}
+	print[i] = '\0';
+	// Make sure that there is space for '0' if necessary.
+	if (d->width == 0)
+		i = 1;
+	// If conversion type is 'o' and there is '#' flag print '0' for the flag.
+	if (d->conv_o == 1 && d->hash == 1)
+	{
+		print[i - 1] = '0';
+		print[i] = '\0';
+	}
+}

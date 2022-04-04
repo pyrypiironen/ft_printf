@@ -29,6 +29,7 @@ void	convert_di(va_list ap, t_struct *d)
 	print[d->print_len] = '\0';
 	fill_print(d, print);
 	plant_arg(d, print, input);
+	zero_precision_check(d, print);
 	adjust_left(d, print);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 
@@ -113,6 +114,8 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 	{
 		while(print[i] == '0')
 			i--;
+		if (i == -1)
+			i = 0;
 		print[i] = '+';
 	}
 	// space
@@ -124,24 +127,26 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 	}
 	// minus
 	i = d->print_len;
-	while (print[i] != ' ' && print[i] > 0)
+	while (print[i] != ' ' && i > 0)
 		i--;
 	if (d->arg < 0)
-	print[i] = '-';
+		print[i] = '-';
 }
 
 void	adjust_left(t_struct *d ,char *print)
 {
 	int	i;
 	int j;
+	int	k;
 
 	i = 0;
 	j = 0;
+	k = ft_strlen(print);
 	if (d->space == 1 && print[0] == ' ' && d->arg >= 0)
 		j++;
 	if (d->minus == 0)
 		return ;
-	while (1)
+	while (k > 0)
 	{
 		while (print[i] == ' ')
 			i++;
@@ -154,6 +159,7 @@ void	adjust_left(t_struct *d ,char *print)
 			i++;
 		}
 		i = 0 + j;
+		k--;
 	}
 }
 
@@ -167,7 +173,31 @@ void	read_arg(t_struct *d, va_list ap)
 		d->arg = (long long)va_arg(ap, int);
 }
 
+void	zero_precision_check(t_struct *d, char *print)
+{
+	int	i;
 
+	i = 0;
+	// If precision is zero and argument value is zero there is no
+	// visible print for argument value.
+	if (d->padding != 0 || d->arg != 0)
+		return ;
+	while (i < d->width)
+	{
+		print[i] = ' ';
+		i++;
+	}
+	print[i] = '\0';
+	// Make sure that there is space for '0' if necessary.
+	if (d->width == 0)
+		i = 1;
+	// If conversion type is 'o' and there is '#' flag print '0' for the flag.
+	if (d->conv_o == 1 && d->hash == 1)
+	{
+		print[i - 1] = '0';
+		print[i] = '\0';
+	}
+}
 
 
 

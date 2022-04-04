@@ -18,6 +18,14 @@ void	convert_s(va_list ap, t_struct *d)
 	char *print;
 
 	input = ft_strdup((char*)va_arg(ap, char*));
+	if (input == NULL)
+	{
+		print = ft_strdup("(null)");
+		ft_putstr(print);
+		d->res += ft_strlen(print); 
+		free(print);
+		return ;
+	}
 	d->input_len = ft_strlen(input);
 	print_len_str(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
@@ -31,6 +39,7 @@ void	convert_s(va_list ap, t_struct *d)
 	free(input);
 	free(print);
 }
+
 
 void	fill_print_str(t_struct *d, char *print, char *input)
 {

@@ -38,8 +38,8 @@ typedef struct		s_struct
 	//					MINIMUM FIELD WIDTH (value)
 	int					width;
 	//					PRECISION (value)
-	//					** -1 is default, because zero is significant.
 	int					padding;
+	//					** -1 is default, because zero is significant.
 	//					LENGTH MODIFIERS
 	int					mod_h;
 	int					mod_hh;
@@ -53,7 +53,7 @@ typedef struct		s_struct
 	long long			arg;
 	unsigned long long	arg_o;
 	char				arg_c;
-	//					RETURN
+	//					RETURN (value)
 	int					res;
 }						t_struct;
 
@@ -78,6 +78,7 @@ int		print_len(t_struct *d);
 void	fill_print(t_struct *d, char *print); 					//diouxX
 void	plant_arg(t_struct *d, char *print, char *input);
 void	adjust_left(t_struct *d ,char *print);					//diouxXcs
+void	zero_precision_check(t_struct *d, char *print);
 
 //		UNSIGNED OCTAL
 void	convert_o(va_list ap, t_struct *d);
@@ -93,14 +94,19 @@ void	convert_u(va_list ap, t_struct *d);
 //		UNSIGNED HEXADESIMAL
 void	convert_x(va_list ap, t_struct *d);
 void	to_lowercase(char *print);
+void	zero_precision_check_unsigned(char *print, t_struct *d);				//ox
 
 //		CHARACTER
 void	convert_c(va_list ap, t_struct *d);
+void	adjust_left_char(t_struct *d ,char *print);
 void	fill_print_char(t_struct *d, char *print);
 
 //		CHARACTER STRING
 void	convert_s(va_list ap, t_struct *d);
 void	fill_print_str(t_struct *d, char *print, char *input);
+
+//		PERCENT CHARACTER
+void	convert_percent(t_struct *d);
 
 
 

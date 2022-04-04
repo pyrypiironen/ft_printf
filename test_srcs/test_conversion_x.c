@@ -176,6 +176,13 @@ void	test_conversion_x()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+		ft_putendl("\nInput: %#08x");
+	my_return = ft_printf("My ft_printf: %#08x $\n", 42);
+	real_return = printf("Real  printf: %#08x $\n", 42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+
 	ft_putendl("\nInput: %#.8x");
 	my_return = ft_printf("My ft_printf: %#.8x $\n", a);
 	real_return = printf("Real  printf: %#.8x $\n", a);
@@ -245,6 +252,27 @@ void	test_conversion_x()
 	ft_putendl("\nInput: %035.llX");
 	my_return = ft_printf("My ft_printf: %035.llX $\n", ll);
 	real_return = printf("Real  printf: %035.llX $\n", ll);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	// ZERO PRECISION AND ZERO ARGUMENT
+	ft_putendl("\n\n * * * * * Precision zero and argument value zero:  * * * * *");
+
+	ft_putendl("\nInput: %#.x %#.0x");
+	my_return = ft_printf("My ft_printf: %#.x %#.0x $\n", 0, 0);
+	real_return = printf("Real  printf: %#.x %#.0x $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.x %.0x");
+	my_return = ft_printf("My ft_printf: %.x %.0x $\n", 0, 0);
+	real_return = printf("Real  printf: %.x %.0x $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: \n%5.x %5.0x");
+	my_return = ft_printf("My ft_printf: %5.x %5.0x $\n", 0, 0);
+	real_return = printf("Real  printf: %5.x %5.0x $\n", 0, 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 

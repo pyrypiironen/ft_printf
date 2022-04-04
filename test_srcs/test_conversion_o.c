@@ -134,6 +134,12 @@ void	test_conversion_o()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %#8o");
+	my_return = ft_printf("My ft_printf: %#8o $\n", 2500);
+	real_return = printf("Real  printf: %#8o $\n", 2500);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	ft_putendl("\nInput: %#.8o");
 	my_return = ft_printf("My ft_printf: %#.8o $\n", a);
 	real_return = printf("Real  printf: %#.8o $\n", a);
@@ -152,6 +158,32 @@ void	test_conversion_o()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	// LENGTH MODIFIERS
+	ft_putendl("\n\n * * * * * Hash flag with argument value zero:  * * * * *");
+
+	ft_putendl("\nInput: %.o %.0o");
+	my_return = ft_printf("My ft_printf: %.o %.0o $\n", 0, 0);
+	real_return = printf("Real  printf: %.o %.0o $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %5.o %5.0o");
+	my_return = ft_printf("My ft_printf: %5.o %5.0o $\n", 0, 0);
+	real_return = printf("Real  printf: %5.o %5.0o $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %#.o %#.0o");
+	my_return = ft_printf("My ft_printf: %#.o %#.0o $\n", 0, 0);
+	real_return = printf("Real  printf: %#.o %#.0o $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %#-8.o %#.0o");
+	my_return = ft_printf("My ft_printf: %#-8.o %#.0o $\n", 0, 0);
+	real_return = printf("Real  printf: %#-8.o %#.0o $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	// LENGTH MODIFIERS
 	ft_putendl("\n\n * * * * * Lengt modifiers:  * * * * *");
