@@ -12,13 +12,13 @@
 
 #include "test.h"
 
-void	test_percent()
+void	test_modulo()
 {
 	int real_return;
 	int my_return;
 
 
-	ft_putendl("\n\n * * * * * * * * * * PERCENT CHARACTER:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * MODULO CHARACTER:  * * * * * * * * * *\n");
 
 	ft_putendl("\nInput: %%");
 	my_return = ft_printf("My ft_printf: %% $\n");

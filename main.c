@@ -15,14 +15,14 @@
 
 int main()
 {
-	// test_conversion_di();
-	// test_conversion_o();
-	// test_conversion_u();
-	// test_conversion_x();
-	// test_conversion_c();
-	// test_conversion_s();
-	// test_percent();
-	 filechecker();
+	//test_conversion_di();
+	//test_conversion_o();
+	//test_conversion_u();
+	//test_conversion_x();
+	//test_conversion_c();
+	//test_conversion_s();
+	// test_modulo();
+	filechecker();
 
 
 	return 0;

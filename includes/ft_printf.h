@@ -115,5 +115,5 @@ void	convert_modulo(t_struct *d);
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
 
-//testi
+
 #endif

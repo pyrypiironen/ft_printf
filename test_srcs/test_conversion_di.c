@@ -316,6 +316,18 @@ void	test_conversion_di()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: % 03d");
+	my_return = ft_printf("My ft_printf: % 03d $\n", 0);
+	real_return = printf("Real  printf: % 03d $\n", 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+03d");
+	my_return = ft_printf("My ft_printf: %+03d $\n", 0);
+	real_return = printf("Real  printf: %+03d $\n", 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// Testing with multiple arguments
 	ft_putendl("\n\n * * * * * Testing with multiple arguments:  * * * * *");
 
