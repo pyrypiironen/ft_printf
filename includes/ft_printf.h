@@ -46,7 +46,7 @@ typedef struct		s_struct
 	int					mod_l;
 	int					mod_ll;
 	int					mod_L;
-	//					PRINTING
+	//					PRINTING (value)
 	int					input_len;
 	int					print_len;
 	//					ARGUMENTS (value)
@@ -115,5 +115,5 @@ void	convert_modulo(t_struct *d);
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
 
-
+//testi
 #endif
