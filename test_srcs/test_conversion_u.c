@@ -172,6 +172,12 @@ void	test_conversion_u()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %.u %.0u");
+	my_return = ft_printf("My ft_printf: %.u %.0u $\n", 0, 0);
+	real_return = printf("Real  printf: %.u %.0u $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// Testing with multiple arguments
 	ft_putendl("\n\n * * * * * Testing with multiple arguments:  * * * * *");
 

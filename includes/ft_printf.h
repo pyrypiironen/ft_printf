@@ -104,16 +104,16 @@ void	fill_print_char(t_struct *d, char *print);
 //		CHARACTER STRING
 void	convert_s(va_list ap, t_struct *d);
 void	fill_print_str(t_struct *d, char *print, char *input);
+void	print_len_str(t_struct *d);
 
-//		PERCENT CHARACTER
-void	convert_percent(t_struct *d);
-
+//		MODULO CHARACTER
+void	convert_modulo(t_struct *d);
 
 
 
 //		STRUCT SETTINGS
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
-void	print_len_str(t_struct *d);
+
 
 #endif

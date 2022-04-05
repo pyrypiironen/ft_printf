@@ -101,31 +101,29 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 {
 	int	i;
 
-	// arg (w/o minus if negative)
+	// Plant argument. If argument value is negative, plant it without minus.
 	while (d->input_len >= 0 && input[d->input_len] != '-')
 	{
 		print[d->print_len] = input[d->input_len];
 		d->input_len--;
 		d->print_len--;
 	}
-	// plus
+	// Plant plus if there is '+' flag.
 	i = d->print_len;
 	if (d->plus == 1 && d->arg >= 0)
 	{
-		while(print[i] == '0')
+		while(print[i] == '0' && i > 0)
 			i--;
-		if (i == -1)
-			i = 0;
 		print[i] = '+';
 	}
-	// space
+	// Plant space if there is ' ' flag.
 	else if (d->space == 1)
 	{
-		while(print[i] == '0')
+		while(print[i] == '0' && i > 0)
 			i--;
 		print[i] = ' ';
 	}
-	// minus
+	// Plant minus if argument value is negative.
 	i = d->print_len;
 	while (print[i] != ' ' && i > 0)
 		i--;
@@ -166,11 +164,15 @@ void	adjust_left(t_struct *d ,char *print)
 void	read_arg(t_struct *d, va_list ap)
 {
 	if (d->mod_l == 1)
-		d->arg = (long long)va_arg(ap, long);
+		d->arg = (long)va_arg(ap, long);
 	else if (d->mod_ll == 1)
 		d->arg = (long long)va_arg(ap, long long);
+	else if (d->mod_h == 1)
+		d->arg = (short)va_arg(ap, int);
+	else if (d->mod_hh == 1)
+		d->arg = (signed char)va_arg(ap, int);
 	else
-		d->arg = (long long)va_arg(ap, int);
+		d->arg = (int)va_arg(ap, int);
 }
 
 void	zero_precision_check(t_struct *d, char *print)

@@ -70,4 +70,16 @@ void	test_conversion_s()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %s, NULL");
+	my_return = ft_printf("My ft_printf: %s $\n", NULL);
+	real_return = printf("Real  printf: %s $\n", NULL);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %s %s, NULL, string");
+	my_return = ft_printf("My ft_printf: %s %s $\n", NULL, "Holla!");
+	real_return = printf("Real  printf: %s %s $\n", NULL, "Holla!");
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 }

@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_percent(t_struct *d)
+void	convert_modulo(t_struct *d)
 {
 	char	*print;
 	int	i;

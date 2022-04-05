@@ -27,8 +27,6 @@ void	convert_o(va_list ap, t_struct *d)
 		exit(0);
 	print[d->print_len] = '\0';
 	fill_print(d, print);
-	//if (d->hash == 1 && d->minus == 0)
-	//	print[0] = '0';
 	plant_arg_unsigned(d, print, input);
 	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
@@ -41,9 +39,13 @@ void	convert_o(va_list ap, t_struct *d)
 void	read_arg_unsigned(t_struct *d, va_list ap)
 {
 	if (d->mod_l == 1)
-		d->arg_o = (unsigned long long)va_arg(ap, unsigned long);
+		d->arg_o = (unsigned long)va_arg(ap, unsigned long);
 	else if (d->mod_ll == 1)
 		d->arg_o = (unsigned long long)va_arg(ap, unsigned long long);
+	else if (d->mod_h == 1)
+		d->arg_o = (unsigned short)va_arg(ap, unsigned int);
+	else if (d->mod_hh == 1)
+		d->arg_o = (unsigned char)va_arg(ap, unsigned int);
 	else
 		d->arg_o = (unsigned long long)va_arg(ap, unsigned int);
 }
@@ -74,9 +76,9 @@ char	*ft_itoa_base(unsigned long long n, int base)
 
 int	print_len_unsigned(t_struct *d, int len)
 {
-	// Count space for '0' if conversion type is 'o'
+	// Count space for '0' if conversion type is 'o', argument value is non-zero
 	// and there is '#' flag.
-	if (d->hash == 1 && d->conv_o == 1)
+	if (d->hash == 1 && d->conv_o == 1 && d->arg_o != 0)//hox
 		len++;
 	// If padding is longer than len, use it as len.
 	if (d->padding > len)
@@ -122,26 +124,3 @@ void	plant_arg_unsigned(t_struct *d, char *print, char  *input)
 		d->print_len--;
 	}
 }
-
-
-
-
-
-// int	print_len_unsigned(t_struct *d, int len)
-// {
-// 	// Count space for '0' if conversion type is 'o'
-// 	// and there is '#' flag.
-// 	if (d->hash == 1 && d->conv_o == 1)
-// 		len++;
-// 	// Count space for prefix if conversion type is 'x' or 'X'
-// 	// and there is '#' flag.
-// 	if (d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1))
-// 		len += 2;
-// 	// If minimum field width is longer than len, use it as len.
-// 	if (d->width > len)
-// 		len = d->width;
-// 	// If padding is longer than len, use it as len.
-// 	if (d->padding > len)
-// 		len = d->padding;
-// 	return (len);
-// }

@@ -34,7 +34,7 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 	else if (format[d->pos] == 's')
 		convert_s(ap, d);
 	else if (format[d->pos] == '%')
-		convert_percent(d);
+		convert_modulo(d);
 	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
 	// 	convert_f(ap, d);
 }

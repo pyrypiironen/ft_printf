@@ -233,6 +233,12 @@ void	test_conversion_o()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %o %ho %hho");
+	my_return = ft_printf("My ft_printf: %o, %ho, %hho $\n", -42, -42, -42);
+	real_return = printf("Real  printf: %o, %ho, %hho $\n", -42, -42, -42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// Testing with multiple arguments
 	ft_putendl("\n\n * * * * * Testing with multiple arguments:  * * * * *");
 

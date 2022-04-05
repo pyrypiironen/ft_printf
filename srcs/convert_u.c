@@ -27,6 +27,7 @@ void	convert_u(va_list ap, t_struct *d)
 	print[d->print_len] = '\0';
 	fill_print(d, print);
 	plant_arg_unsigned(d, print, input);
+	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 

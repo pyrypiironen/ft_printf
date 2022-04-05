@@ -286,6 +286,36 @@ void	test_conversion_di()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %0+5d");
+	my_return = ft_printf("My ft_printf: %0+5d $\n", 42);
+	real_return = printf("Real  printf: %0+5d $\n", 42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %05d");
+	my_return = ft_printf("My ft_printf: %05d $\n", -42);
+	real_return = printf("Real  printf: %05d $\n", -42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %0+5d");
+	my_return = ft_printf("My ft_printf: %0+5d $\n", -42);
+	real_return = printf("Real  printf: %0+5d $\n", -42);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput:%5.d %5.0d");
+	my_return = ft_printf("My ft_printf: %5.d %5.0d $\n", 0, 0);
+	real_return = printf("Real  printf: %5.d %5.0d $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput:%.d %.0d");
+	my_return = ft_printf("My ft_printf: %.d %.0d $\n", 0, 0);
+	real_return = printf("Real  printf: %.d %.0d $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// Testing with multiple arguments
 	ft_putendl("\n\n * * * * * Testing with multiple arguments:  * * * * *");
 

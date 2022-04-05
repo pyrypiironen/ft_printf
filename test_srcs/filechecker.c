@@ -21,48 +21,28 @@ void	filechecker()
 
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
-	
-	ft_putendl("\nInput: %s, NULL");
-	my_return = ft_printf("My ft_printf: %s $\n", NULL);
-	real_return = printf("Real  printf: %s $\n", NULL);
+	ft_putendl("\nInput: %#o");
+	my_return = ft_printf("My ft_printf: %#o $\n", 0);
+	real_return = printf("Real  printf: %#o $\n", 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %s %s, NULL, string");
-	my_return = ft_printf("My ft_printf: %s %s $\n", NULL, "Holla!");
-	real_return = printf("Real  printf: %s %s $\n", NULL, "Holla!");
+	ft_putendl("\nInput: % 03d");
+	my_return = ft_printf("My ft_printf: % 03d $\n", 0);
+	real_return = printf("Real  printf: % 03d $\n", 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %0+5d");
-	my_return = ft_printf("My ft_printf: %0+5d $\n", 42);
-	real_return = printf("Real  printf: %0+5d $\n", 42);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-//----------
-	ft_putendl("\nInput: %05d");
-	my_return = ft_printf("My ft_printf: %05d $\n", -42);
-	real_return = printf("Real  printf: %05d $\n", -42);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-//----------
-	ft_putendl("\nInput: %0+5d");
-	my_return = ft_printf("My ft_printf: %0+5d $\n", -42);
-	real_return = printf("Real  printf: %0+5d $\n", -42);
+	ft_putendl("\nInput: %+03d");
+	my_return = ft_printf("My ft_printf: %+03d $\n", 0);
+	real_return = printf("Real  printf: %+03d $\n", 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput:%5.d %5.0d");
-	my_return = ft_printf("My ft_printf: %5.d %5.0d $\n", 0, 0);
-	real_return = printf("Real  printf: %5.d %5.0d $\n", 0, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput:%.d %.0d");
-	my_return = ft_printf("My ft_printf: %.d %.0d $\n", 0, 0);
-	real_return = printf("Real  printf: %.d %.0d $\n", 0, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+
+
 
 
 
