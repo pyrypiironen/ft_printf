@@ -27,7 +27,10 @@ void	convert_modulo(t_struct *d)
 	print[d->print_len] = '\0';
 	while (i < d->width)
 	{
-		print[i] = ' ';
+		if (d->zero == 1 && d->minus == 0)
+			print[i] = '0';
+		else
+			print[i] = ' ';
 		i++;
 	}
 	if (d->minus == 0)

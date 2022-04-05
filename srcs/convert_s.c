@@ -20,11 +20,11 @@ void	convert_s(va_list ap, t_struct *d)
 	input = ft_strdup((char*)va_arg(ap, char*));
 	if (input == NULL)
 	{
-		print = ft_strdup("(null)");
-		ft_putstr(print);
-		d->res += ft_strlen(print); 
-		free(print);
-		return ;
+		input = ft_strdup("(null)");
+		//ft_putstr(print);
+		//d->res += ft_strlen(print); 
+		//free(print);
+		//return ;
 	}
 	d->input_len = ft_strlen(input);
 	print_len_str(d);
