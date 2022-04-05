@@ -40,7 +40,10 @@ void	fill_print_char(t_struct *d, char *print)
 	i = 0;
 	while (d->print_len - 1 > 0)
 	{
-		print[i] = ' ';
+		if (d->zero == 1)
+			print[i] = '0';
+		else
+			print[i] = ' ';
 		d->print_len--;
 		i++;
 	}
