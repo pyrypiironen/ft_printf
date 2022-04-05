@@ -22,11 +22,11 @@ void	filechecker()
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
 
-	// ft_putendl("\nInput: %-5c with non-printable");
-	// my_return = ft_printf("My ft_printf: %-5c $\n", 0);
-	// real_return = printf("Real  printf: %-5c $\n", 0);
-	// if(my_return != real_return)
-	// 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+	ft_putendl("\nInput: %-5c with non-printable");
+	my_return = ft_printf("My ft_printf: %-5c $\n", 0);
+	real_return = printf("Real  printf: %-5c $\n", 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
 

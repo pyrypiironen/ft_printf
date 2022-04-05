@@ -53,11 +53,9 @@ void	fill_print_char(t_struct *d, char *print)
 void	adjust_left_char(t_struct *d ,char *print)
 {
 	int	i;
-	int j;
 	int	k;
 
 	i = 0;
-	j = 0;
 	k = d->width;
 	if (d->minus == 0)
 		return ;
@@ -65,7 +63,7 @@ void	adjust_left_char(t_struct *d ,char *print)
 	{
 		while (print[i] == ' ')
 			i++;
-		if (i == 0 + j)
+		if (i == 0)
 			return ;
 		while (print[i] != '\0')
 		{
@@ -73,7 +71,7 @@ void	adjust_left_char(t_struct *d ,char *print)
 			print[i] = ' ';
 			i++;
 		}
-		i = 0 + j;
+		i = 0;
 		k--;
 	}
 }
