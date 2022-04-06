@@ -48,7 +48,7 @@ void	flags(const char *format, t_struct *d)
 		d->space = 0;
 }
 
-void	width(const char *format, t_struct *d)
+void	width(const char *format, va_list ap, t_struct *d)
 {
 	int		i;
 	char	str[20];
@@ -61,6 +61,16 @@ void	width(const char *format, t_struct *d)
 		d->pos++;
 	}
 	str[i] = '\0';
+	//new
+	if (i == 0)	//if there is no width given by numbers check asterix
+	{
+		if (format[d->pos] == '*')
+		{
+					d->width = va_arg(ap, int);
+					d->pos++;
+		}
+	}
+	//
 	if (i > 0)
 		d->width = ft_atoi(str);
 }

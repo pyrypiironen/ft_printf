@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filechecker.c                                      :+:      :+:    :+:   */
+/*   test_asterix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 13:59:00 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/04/04 13:59:02 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/04/06 18:55:35 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/04/06 18:55:37 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "test.h"
 
-void	filechecker()
+void	test_asterix()
 {
 	int real_return;
 	int my_return = 0;
-	//char *a1 = "Hello";
 
 
-	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
+	ft_putendl("\n\n * * * * * * * * * * Asterix (*): * * * * * * * * * *\n");
 
-
-	ft_putendl("\nInput: %*d");
+	ft_putendl("Input: %*d");
 	my_return = ft_printf("My ft_printf: %*d $\n", 12, 42);
 	real_return = printf("Real  printf: %*d $\n", 12, 42);
 	if(my_return != real_return)
@@ -82,7 +79,5 @@ void	filechecker()
 	real_return = printf("Real  printf: %*x $\n", 12, 42);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-
 
 }

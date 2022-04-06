@@ -65,7 +65,7 @@ int		read_format(const char *format, va_list ap, t_struct *d);
 //		READ SPECIFIERS
 int		is_conversion(const char *format, t_struct *d);
 void	flags(const char *format, t_struct *d);
-void	width(const char *format, t_struct *d);
+void	width(const char *format, va_list ap, t_struct *d);
 void	precision(const char *format, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
 

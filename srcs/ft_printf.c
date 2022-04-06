@@ -47,7 +47,7 @@ int read_format(const char *format, va_list ap, t_struct *d)
 			{
 				// check_flag_errors(d);
 				flags(format, d);
-				width(format, d);
+				width(format, ap, d);
 				precision(format, d);
 				modifiers(format, d);
 				conversion(format, ap, d);
