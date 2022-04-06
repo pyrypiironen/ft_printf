@@ -21,8 +21,9 @@ int main()
 	//test_conversion_x();
 	// test_conversion_c();
 	//test_conversion_s();
+	test_conversion_p();
 	// test_modulo();
-	 filechecker();
+	 // filechecker();
 
 
 	return 0;

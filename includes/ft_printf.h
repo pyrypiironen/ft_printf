@@ -29,6 +29,7 @@ typedef struct		s_struct
 	int					conv_o;
 	int					conv_x;
 	int					conv_X;
+	int					conv_p;
 	//					FLAGS
 	int					hash;
 	int					zero;
@@ -84,7 +85,6 @@ void	zero_precision_check(t_struct *d, char *print);
 void	convert_o(va_list ap, t_struct *d);
 void	read_arg_unsigned(t_struct *d, va_list ap);					//ouxX
 char	*ft_itoa_base(unsigned long long n, int base);				//ouxX
-//		hox hox
 int		print_len_unsigned(t_struct *d, int len);					//ouxX
 void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ouxX
 
@@ -105,6 +105,9 @@ void	fill_print_char(t_struct *d, char *print);
 void	convert_s(va_list ap, t_struct *d);
 void	fill_print_str(t_struct *d, char *print, char *input);
 void	print_len_str(t_struct *d);
+
+//		VOID POINTER
+void	convert_p(va_list ap, t_struct *d);
 
 //		MODULO CHARACTER
 void	convert_modulo(t_struct *d);

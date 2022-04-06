@@ -36,15 +36,17 @@ void	convert_c(va_list ap, t_struct *d)
 void	fill_print_char(t_struct *d, char *print)
 {
 	int	i;
+	int	len;
 
 	i = 0;
-	while (d->print_len - 1 > 0)
+	len = d->print_len;
+	while (len - 1 > 0)
 	{
 		if (d->zero == 1)
 			print[i] = '0';
 		else
 			print[i] = ' ';
-		d->print_len--;
+		len--;
 		i++;
 	}
 	print[i] = d->arg_c;
@@ -65,7 +67,7 @@ void	adjust_left_char(t_struct *d ,char *print)
 			i++;
 		if (i == 0)
 			return ;
-		while (print[i] != '\0')
+		while (i < k)
 		{
 			print[i - 1] = print[i];
 			print[i] = ' ';

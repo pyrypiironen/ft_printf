@@ -35,6 +35,8 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 		convert_s(ap, d);
 	else if (format[d->pos] == '%')
 		convert_modulo(d);
+	else if (format[d->pos] == 'p')
+		convert_p(ap, d);
 	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
 	// 	convert_f(ap, d);
 }

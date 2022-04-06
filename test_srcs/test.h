@@ -25,7 +25,9 @@ void	test_conversion_u();
 void	test_conversion_x();
 void	test_conversion_c();
 void	test_conversion_s();
+void	test_conversion_p();
 void	test_modulo();
+
 void	filechecker();
 
 #endif

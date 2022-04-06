@@ -16,20 +16,30 @@
 void	filechecker()
 {
 	int real_return;
-	int my_return;
+	int my_return = 0;
+	char *a1 = "Hello";
 
 
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
 
-	ft_putendl("\nInput: %-5c with non-printable");
-	my_return = ft_printf("My ft_printf: %-5c $\n", 0);
-	real_return = printf("Real  printf: %-5c $\n", 0);
+	ft_putendl("\nInput: %p ");
+	my_return = ft_printf("My ft_printf: %p $\n", &a1);
+	real_return = printf("Real  printf: %p $\n", &a1);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %35p ");
+	my_return = ft_printf("My ft_printf: %35p $\n", &a1);
+	real_return = printf("Real  printf: %35p $\n", &a1);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-
+	ft_putendl("\nInput: %-35p ");
+	my_return = ft_printf("My ft_printf: %-35p $\n", &a1);
+	real_return = printf("Real  printf: %-35p $\n", &a1);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
 
