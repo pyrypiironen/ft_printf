@@ -26,6 +26,7 @@ void	set_struct(t_struct *d)
 	d->space = 0;
 	d->width = 0;
 	d->padding = -1;	// -1 is default because zero is significant
+	d->s_pad = 0;
 	d->mod_h = 0;
 	d->mod_hh = 0;
 	d->mod_l = 0;
@@ -47,6 +48,7 @@ void	reset_struct(t_struct *d)
 	d->space = 0;
 	d->width = 0;
 	d->padding = -1;
+	d->s_pad = 0;
 	d->mod_h = 0;
 	d->mod_hh = 0;
 	d->mod_l = 0;

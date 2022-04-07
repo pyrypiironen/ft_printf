@@ -17,6 +17,8 @@ void	convert_s(va_list ap, t_struct *d)
 	char *input;
 	char *print;
 
+	if (d->s_pad == -1)
+		d->padding = -1;
 	input = ft_strdup((char*)va_arg(ap, char*));
 	if (input == NULL)
 	{

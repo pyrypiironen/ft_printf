@@ -59,6 +59,10 @@ void	filechecker()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-
+	ft_putendl("\nInput: %s");
+	my_return = ft_printf("My ft_printf: %s $\n", "Hello");
+	real_return = printf("Real  printf: %s $\n", "Hello");
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 }

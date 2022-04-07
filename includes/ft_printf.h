@@ -40,6 +40,7 @@ typedef struct		s_struct
 	int					width;
 	//					PRECISION (value)
 	int					padding;
+	int					s_pad;
 	//					** -1 is default, because zero is significant.
 	//					LENGTH MODIFIERS
 	int					mod_h;

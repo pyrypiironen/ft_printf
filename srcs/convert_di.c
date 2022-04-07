@@ -18,6 +18,7 @@ void	convert_di(va_list ap, t_struct *d)
 	char		*print;
 	int			i;
 
+	//printf("d->padding is %d\n", d->padding);
 	i = 0;
 	read_arg(d, ap);
 	input = ft_itoa(d->arg);

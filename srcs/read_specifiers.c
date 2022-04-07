@@ -100,8 +100,13 @@ void	precision(const char *format, va_list ap, t_struct *d)
 		{
 			if (format[d->pos] == '*')
 			{
-						d->padding = va_arg(ap, int);
-						d->pos++;
+				d->padding = va_arg(ap, int);
+				d->pos++;
+				if (d->padding < 0)
+				{
+					d->padding = 1;
+					d->s_pad = -1;
+				}
 			}
 		}
 		//
