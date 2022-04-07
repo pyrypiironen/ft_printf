@@ -67,6 +67,11 @@ void	width(const char *format, va_list ap, t_struct *d)
 		if (format[d->pos] == '*')
 		{
 					d->width = va_arg(ap, int);
+					if(d->width < 0)
+					{
+						d->width *= -1;
+						d->minus = 1;
+					}
 					d->pos++;
 		}
 	}
@@ -75,7 +80,7 @@ void	width(const char *format, va_list ap, t_struct *d)
 		d->width = ft_atoi(str);
 }
 
-void	precision(const char *format, t_struct *d)
+void	precision(const char *format, va_list ap, t_struct *d)
 {
 	int		i;
 	char	str[20];
@@ -90,10 +95,20 @@ void	precision(const char *format, t_struct *d)
 			i++;
 			d->pos++;
 		}
+		//new
+		if (i == 0)	//if there is no precision given by numbers check asterix
+		{
+			if (format[d->pos] == '*')
+			{
+						d->padding = va_arg(ap, int);
+						d->pos++;
+			}
+		}
+		//
 		str[i] = '\0';
 		if (i > 0)
 			d->padding = ft_atoi(str);
-		else
+		else if (d->padding == -1)
 			d->padding = 0;
 	}
 }

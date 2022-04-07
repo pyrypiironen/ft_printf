@@ -23,8 +23,8 @@ int main()
 	//test_conversion_s();
 	// test_conversion_p();
 	// test_modulo();
-	test_asterix();
-	// filechecker();
+	// test_asterix();
+	filechecker();
 
 
 	return 0;
