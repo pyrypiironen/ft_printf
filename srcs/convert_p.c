@@ -30,6 +30,7 @@ void	convert_p(va_list ap, t_struct *d)
 	plant_arg_unsigned(d, print, input);
 	adjust_left(d, print);
 	to_lowercase(print);
+	zero_precision_check_unsigned(print, d);
 	ft_putstr(print);
 	d->res += ft_strlen(print); 
 	free(input);

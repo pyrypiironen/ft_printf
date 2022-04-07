@@ -23,46 +23,18 @@ void	filechecker()
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
 
-	ft_putendl("\nInput: %.*d");
-	my_return = ft_printf("My ft_printf: %.*d $\n", -1, 0);
-	real_return = printf("Real  printf: %.*d $\n", -1, 0);
+	ft_putendl("\nInput: %.0p, %.p");
+	my_return = ft_printf("My ft_printf: %.0p, %.p $\n", 0, 0);
+	real_return = printf("Real  printf: %.0p, %.p $\n", 0, 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.*u");
-	my_return = ft_printf("My ft_printf: %.*u $\n", -1, 0);
-	real_return = printf("Real  printf: %.*u $\n", -1, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.*o");
-	my_return = ft_printf("My ft_printf: %.*o $\n", -1, 0);
-	real_return = printf("Real  printf: %.*o $\n", -1, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+// >>>> bonus_03_wildcard_flag_mix.sp [FAIL] FF [FAIL] digit_wildcard_and_min_width_value3 -> printf("{%*3d}", 5, 0)
+// [ ----------END OF UNIT TESTS---------- ]
 
-	ft_putendl("\nInput: %.*x");
-	my_return = ft_printf("My ft_printf: %.*x $\n", -1, 0);
-	real_return = printf("Real  printf: %.*x $\n", -1, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.*X");
-	my_return = ft_printf("My ft_printf: %.*X $\n", -1, 0);
-	real_return = printf("Real  printf: %.*X $\n", -1, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.*s");
-	my_return = ft_printf("My ft_printf: %.*s $\n", -1, 0);
-	real_return = printf("Real  printf: %.*s $\n", -1, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %s");
-	my_return = ft_printf("My ft_printf: %s $\n", "Hello");
-	real_return = printf("Real  printf: %s $\n", "Hello");
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 }

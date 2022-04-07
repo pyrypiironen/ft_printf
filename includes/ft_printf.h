@@ -95,7 +95,7 @@ void	convert_u(va_list ap, t_struct *d);
 //		UNSIGNED HEXADESIMAL
 void	convert_x(va_list ap, t_struct *d);
 void	to_lowercase(char *print);
-void	zero_precision_check_unsigned(char *print, t_struct *d);				//ox
+void	zero_precision_check_unsigned(char *print, t_struct *d);	//ox
 
 //		CHARACTER
 void	convert_c(va_list ap, t_struct *d);
