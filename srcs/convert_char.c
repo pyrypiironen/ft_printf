@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_c(va_list ap, t_struct *d)
+void	convert_char(va_list ap, t_struct *d)
 {
 	char		*print;
 

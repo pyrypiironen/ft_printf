@@ -14,29 +14,26 @@
 
 void	conversion(const char *format, va_list ap, t_struct *d)
 {
-	(void)format;
 	if (format[d->pos] == 'd' || format[d->pos] == 'i')
-		convert_di(ap, d);
+		convert_int(ap, d);
 	else if (format[d->pos] == 'o')
-		convert_o(ap,  d);
+		convert_octal(ap,  d);
 	else if (format[d->pos] == 'u')
-		convert_u(ap, d);
+		convert_unsigned_int(ap, d);
 	else if (format[d->pos] == 'x' || format[d->pos] == 'X')
 	{
 		if (format[d->pos] == 'x')
 			d->conv_x = 1;
-		else
-			d->conv_X = 1;
-		convert_x(ap, d);
+		convert_hexadecimal(ap, d);
 	}
 	else if (format[d->pos] == 'c')
-		convert_c(ap, d);
+		convert_char(ap, d);
 	else if (format[d->pos] == 's')
-		convert_s(ap, d);
+		convert_string(ap, d);
 	else if (format[d->pos] == '%')
 		convert_modulo(d);
 	else if (format[d->pos] == 'p')
-		convert_p(ap, d);
-	// else if (format[d->pos] == 'f' || format[d->pos] == 'F')
-	// 	convert_f(ap, d);
+		convert_pointer(ap, d);
+	 else if (format[d->pos] == 'f' || format[d->pos] == 'F')
+	 	convert_double(ap, d);
 }

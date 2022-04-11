@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_o(va_list ap, t_struct *d)
+void	convert_octal(va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;

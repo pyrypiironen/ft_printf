@@ -23,11 +23,18 @@ void	filechecker()
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
 
-	ft_putendl("\nInput: %.0p, %.p");
-	my_return = ft_printf("My ft_printf: %.0p, %.p $\n", 0, 0);
-	real_return = printf("Real  printf: %.0p, %.p $\n", 0, 0);
+	ft_putendl("\nInput: %f");
+	my_return = ft_printf("My ft_printf: %.6f $\n", 4.71);
+	real_return = printf("Real  printf: %.6f $\n", 4.71);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.2f");
+	my_return = ft_printf("My ft_printf: %.2f $\n", 4.666666);
+	real_return = printf("Real  printf: %.2f $\n", 4.666666);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 
 
 // >>>> bonus_03_wildcard_flag_mix.sp [FAIL] FF [FAIL] digit_wildcard_and_min_width_value3 -> printf("{%*3d}", 5, 0)

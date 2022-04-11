@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_x(va_list ap, t_struct *d)
+void	convert_hexadecimal(va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;
@@ -32,7 +32,7 @@ void	convert_x(va_list ap, t_struct *d)
 		to_lowercase(print);
 	zero_precision_check_unsigned(print, d);
 	ft_putstr(print);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }

@@ -55,6 +55,7 @@ typedef struct		s_struct
 	long long			arg;
 	unsigned long long	arg_o;
 	char				arg_c;
+	long double			arg_f;
 	//					RETURN (value)
 	int					res;
 }						t_struct;
@@ -74,7 +75,7 @@ void	modifiers(const char *format, t_struct *d);
 void	conversion(const char *format, va_list ap, t_struct *d);
 
 //		SIGNED DESIMAL
-void	convert_di(va_list ap, t_struct *d);
+void	convert_int(va_list ap, t_struct *d);
 void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d);
 void	fill_print(t_struct *d, char *print); 					//diouxX
@@ -83,32 +84,38 @@ void	adjust_left(t_struct *d ,char *print);					//diouxXcs
 void	zero_precision_check(t_struct *d, char *print);
 
 //		UNSIGNED OCTAL
-void	convert_o(va_list ap, t_struct *d);
+void	convert_octal(va_list ap, t_struct *d);
 void	read_arg_unsigned(t_struct *d, va_list ap);					//ouxX
 char	*ft_itoa_base(unsigned long long n, int base);				//ouxX
 int		print_len_unsigned(t_struct *d, int len);					//ouxX
 void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ouxX
 
 //		UNSIGNED DESIMAL
-void	convert_u(va_list ap, t_struct *d);
+void	convert_unsigned_int(va_list ap, t_struct *d);
 
 //		UNSIGNED HEXADESIMAL
-void	convert_x(va_list ap, t_struct *d);
+void	convert_hexadecimal(va_list ap, t_struct *d);
 void	to_lowercase(char *print);
 void	zero_precision_check_unsigned(char *print, t_struct *d);	//ox
 
 //		CHARACTER
-void	convert_c(va_list ap, t_struct *d);
+void	convert_char(va_list ap, t_struct *d);
 void	adjust_left_char(t_struct *d ,char *print);
 void	fill_print_char(t_struct *d, char *print);
 
 //		CHARACTER STRING
-void	convert_s(va_list ap, t_struct *d);
+void	convert_string(va_list ap, t_struct *d);
 void	fill_print_str(t_struct *d, char *print, char *input);
 void	print_len_str(t_struct *d);
 
 //		VOID POINTER
-void	convert_p(va_list ap, t_struct *d);
+void	convert_pointer(va_list ap, t_struct *d);
+
+//		DOUBLE
+void	convert_double(va_list ap, t_struct *d);
+void	read_arg_double(t_struct *d, va_list ap);
+char	*ft_dtoa(long double n, size_t precision);
+char	*fractional_toa(long double n, size_t precision);
 
 //		MODULO CHARACTER
 void	convert_modulo(t_struct *d);

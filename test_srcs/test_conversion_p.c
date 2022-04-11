@@ -68,6 +68,12 @@ void	test_conversion_p()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %.0p, %.p");
+	my_return = ft_printf("My ft_printf: %.0p, %.p $\n", 0, 0);
+	real_return = printf("Real  printf: %.0p, %.p $\n", 0, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 
 
 

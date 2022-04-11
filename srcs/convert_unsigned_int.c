@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_u(va_list ap, t_struct *d)
+void	convert_unsigned_int(va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;
