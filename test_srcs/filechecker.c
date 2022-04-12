@@ -23,15 +23,9 @@ void	filechecker()
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
 
-	ft_putendl("\nInput: %f");
-	my_return = ft_printf("My ft_printf: %.6f $\n", 4.71);
-	real_return = printf("Real  printf: %.6f $\n", 4.71);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
-
-	ft_putendl("\nInput: %.2f");
-	my_return = ft_printf("My ft_printf: %.2f $\n", 4.666666);
-	real_return = printf("Real  printf: %.2f $\n", 4.666666);
+	ft_putendl("\nInput: %");
+	my_return = ft_printf("My ft_printf: % $\n");
+	real_return = printf("Real  printf: % $\n");
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 

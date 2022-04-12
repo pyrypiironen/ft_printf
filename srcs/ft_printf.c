@@ -19,7 +19,7 @@ int	ft_printf(const char *format, ...)
 	t_struct	*data;
 	int			ret;
 
-	//if *format is NULL >> return something
+	//if format is NULL >> return something
 	data = (t_struct*)malloc(sizeof(t_struct));
 	if (data == NULL)
 		return (0);

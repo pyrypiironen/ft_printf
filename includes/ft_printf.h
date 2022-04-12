@@ -39,9 +39,9 @@ typedef struct		s_struct
 	//					MINIMUM FIELD WIDTH (value)
 	int					width;
 	//					PRECISION (value)
+	//					** -1 is default, because zero is significant.
 	int					padding;
 	int					s_pad;
-	//					** -1 is default, because zero is significant.
 	//					LENGTH MODIFIERS
 	int					mod_h;
 	int					mod_hh;
@@ -54,7 +54,6 @@ typedef struct		s_struct
 	//					ARGUMENTS (value)
 	long long			arg;
 	unsigned long long	arg_o;
-	char				arg_c;
 	long double			arg_f;
 	//					RETURN (value)
 	int					res;
@@ -80,7 +79,7 @@ void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d);
 void	fill_print(t_struct *d, char *print); 					//diouxX
 void	plant_arg(t_struct *d, char *print, char *input);
-void	adjust_left(t_struct *d ,char *print);					//diouxXcs
+void	adjust_left(t_struct *d ,char *print);					//diouxXFcsp
 void	zero_precision_check(t_struct *d, char *print);
 
 //		UNSIGNED OCTAL
@@ -113,9 +112,13 @@ void	convert_pointer(va_list ap, t_struct *d);
 
 //		DOUBLE
 void	convert_double(va_list ap, t_struct *d);
+void	rounders(t_struct *d);
 void	read_arg_double(t_struct *d, va_list ap);
-char	*ft_dtoa(long double n, size_t precision);
-char	*fractional_toa(long double n, size_t precision);
+char	*ft_dtoa(long double n, int precision, t_struct *d);
+char	*fractional_toa(long double n, int precision, t_struct *d);
+int		print_len_double(t_struct *d);
+void	fill_print_double(t_struct *d, char *print);
+void	plant_arg_double(t_struct *d, char *print, char  *input);
 
 //		MODULO CHARACTER
 void	convert_modulo(t_struct *d);

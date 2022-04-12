@@ -108,7 +108,7 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 		d->input_len--;
 		d->print_len--;
 	}
-	// Plant plus if there is '+' flag.
+	// Plant plus if there is '+' flag and argument is non-negative.
 	i = d->print_len;
 	if (d->plus == 1 && d->arg >= 0)
 	{
@@ -200,8 +200,3 @@ void	zero_precision_check(t_struct *d, char *print)
 		print[i] = '\0';
 	}
 }
-
-
-
-
-
