@@ -6,7 +6,7 @@
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 12:22:13 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/04/11 12:22:15 by ppiirone         ###   ########.fr       */
+/*   Updated: 2022/04/13 16:29:02 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	convert_double(va_list ap, t_struct *d)
 	read_arg_double(d, ap);
 	rounders(d);
 	input = ft_dtoa(d->arg_f, d->padding, d);
-	//printf("input: %s\n", input);
 	d->input_len = ft_strlen(input);
 	d->print_len = print_len_double(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
@@ -184,9 +183,7 @@ void	rounders(t_struct *d)
 {
 	long double	rounding;
 	int			i;
-
-	if (d->mod_L == 1)
-		return ;
+	
 	rounding = 0.5;
 	i = 0;
 	if (d->arg_f < 0)
@@ -197,4 +194,15 @@ void	rounders(t_struct *d)
 		i++;
 	}
 	d->arg_f += rounding;
+	// if (d->mod_L == 1)
+	// {
+
+
+
+
+
+
+
+
+	//}
 }

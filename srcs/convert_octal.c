@@ -53,24 +53,20 @@ void	read_arg_unsigned(t_struct *d, va_list ap)
 char	*ft_itoa_base(unsigned long long n, int base)
 {
 	int		i;
-	char	arr[26];
+	char	arr[64];
 	char	*hexa;
 
 	i = 0;
-	hexa = ft_strdup("0123456789ABCDEF");
-	ft_bzero(arr, 26);
+	hexa = "0123456789ABCDEF";
 	if (n == 0)
-	{
-		free(hexa);
 		return (ft_strdup("0"));
-	}
 	while (n > 0)
 	{
 		arr[i] = hexa[n % base];
 		i++;
 		n = n / base;
 	}
-	free(hexa);
+	arr[i] = '\0';
 	return (ft_strduprev(arr));
 }
 
