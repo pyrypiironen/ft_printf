@@ -114,11 +114,13 @@ void	convert_pointer(va_list ap, t_struct *d);
 void	convert_double(va_list ap, t_struct *d);
 void	rounders(t_struct *d);
 void	read_arg_double(t_struct *d, va_list ap);
-char	*ft_dtoa(long double n, int precision, t_struct *d);
+char	*ft_dtoa(int precision, t_struct *d);
+int		is_negative(double nbr);
 char	*fractional_toa(long double n, int precision, t_struct *d);
 int		print_len_double(t_struct *d);
 void	fill_print_double(t_struct *d, char *print);
 void	plant_arg_double(t_struct *d, char *print, char  *input);
+
 
 //		MODULO CHARACTER
 void	convert_modulo(t_struct *d);

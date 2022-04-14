@@ -23,7 +23,7 @@ void	convert_double(va_list ap, t_struct *d)
 		d->padding = 6;
 	read_arg_double(d, ap);
 	rounders(d);
-	input = ft_dtoa(d->arg_f, d->padding, d);
+	input = ft_dtoa(d->padding, d);
 	d->input_len = ft_strlen(input);
 	d->print_len = print_len_double(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
@@ -48,7 +48,7 @@ void read_arg_double(t_struct *d, va_list ap)
 		d->arg_f = (double)va_arg(ap, double);
 }
 
-char	*ft_dtoa(long double n, int precision, t_struct *d)
+char	*ft_dtoa(int precision, t_struct *d)
 {
 	int			i;
 	char		arr[24];//pituus
@@ -56,10 +56,11 @@ char	*ft_dtoa(long double n, int precision, t_struct *d)
 	char		*integral;
 	char		*fractional;
 
+	//integral = ft_itoa(nbr);
 	i = 0;
-	k = (long long)n;
+	k = (long long)d->arg_f;
 	ft_bzero(arr, 24);
-	if (n < 0)
+	if (d->arg_f < 0)
 		k = k * -1;
 	arr[i] = k % 10 + '0';
 	i++;
@@ -69,12 +70,15 @@ char	*ft_dtoa(long double n, int precision, t_struct *d)
 		arr[i] = k % 10 + '0';
 		i++;
 	}
-	if (n < 0)
+	//
+	if (is_negative((d->arg_f) == 1)) //								 EI TOIMI
 		arr[i] = '-';
+	//
+	printf("arr is %s\n", arr);
 	integral = ft_strduprev(arr);
-	fractional = fractional_toa(n, precision, d);
+	fractional = fractional_toa(d->arg_f, precision, d);
 	return (ft_strjoin(integral, fractional));
-	// there is memory leak now
+	// there is memory leak now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 char	*fractional_toa(long double n, int precision, t_struct *d)
@@ -87,8 +91,11 @@ char	*fractional_toa(long double n, int precision, t_struct *d)
 		return (ft_strdup("."));
 	if (precision == 0)
 		return NULL;
-	ft_bzero(arr, precision + 2);
+	//ft_bzero(arr, precision + 2);
 	i = 0;
+	//
+	n -= (long long)n;
+	//
 	while (i < precision)
 	{
 		n *= 10; 
@@ -106,6 +113,8 @@ char	*fractional_toa(long double n, int precision, t_struct *d)
 		precision--;
 	}
 	arr[i] = '.';
+	i++;
+	arr[i] = '\0';
 	return (ft_strduprev(arr));
 }
 
@@ -181,9 +190,32 @@ void	fill_print_double(t_struct *d, char *print)
 
 void	rounders(t_struct *d)
 {
+	long double	nbr;
 	long double	rounding;
 	int			i;
+	i = 0;
 	
+	// check bankers
+		//long double	nbr;
+		char		*alpha;
+		nbr = d->arg_f;
+		//nbr -= (long long)nbr;
+		//if (precision != 0)
+		alpha = fractional_toa(nbr, 19, d);
+		//printf("alpha : %s\n", alpha);
+		if (alpha != '\0')
+			i = ft_strlen(alpha) - 1;
+		while (alpha[i] == '9')
+			i--;
+		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1) 
+			return ;
+		i = ft_strlen(alpha) - 1;
+		while (alpha[i] == '0')
+			i--;
+		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1) 
+			return ;
+		
+	//
 	rounding = 0.5;
 	i = 0;
 	if (d->arg_f < 0)
@@ -194,15 +226,23 @@ void	rounders(t_struct *d)
 		i++;
 	}
 	d->arg_f += rounding;
-	// if (d->mod_L == 1)
-	// {
+}
 
+int	is_negative(double nbr)
+{
+	unsigned long long	*ull;
+	int					sign;
+	double				zero;
 
-
-
-
-
-
-
-	//}
+	if (nbr > 0)
+		return (0);
+	if (nbr < 0)
+		return (1);
+	zero = nbr;
+	ull = (unsigned long long*)&zero;
+	sign = (int)(*ull >> 63);
+	if (sign == 0)
+		return (0);
+	return (1);
+	
 }

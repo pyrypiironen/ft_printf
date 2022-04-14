@@ -34,6 +34,9 @@ void	filechecker()
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
+	double a = 5.42;
+	a -= (int)a;
+	printf("a is %f\n", a);
 
 
 
