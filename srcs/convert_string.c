@@ -21,13 +21,7 @@ void	convert_string(va_list ap, t_struct *d)
 		d->padding = -1;
 	input = ft_strdup((char*)va_arg(ap, char*));
 	if (input == NULL)
-	{
 		input = ft_strdup("(null)");
-		//ft_putstr(print);
-		//d->res += ft_strlen(print); 
-		//free(print);
-		//return ;
-	}
 	d->input_len = ft_strlen(input);
 	print_len_str(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);

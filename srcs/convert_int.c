@@ -16,9 +16,9 @@ void	convert_int(va_list ap, t_struct *d)
 {
 	char		*input;
 	char		*print;
-	int			i;
+	//int			i;
 
-	i = 0;
+	//i = 0;
 	read_arg(d, ap);
 	input = ft_itoa(d->arg);
 	d->input_len = ft_strlen(input);

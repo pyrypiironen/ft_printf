@@ -29,6 +29,7 @@ void	test_conversion_p();
 void	test_conversion_f();
 void	test_modulo();
 void	test_asterix();
+void	test_binary();
 void	filechecker();
 
 #endif

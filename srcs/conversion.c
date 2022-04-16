@@ -36,6 +36,8 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 		convert_modulo(d);
 	else if (format[d->pos] == 'p')
 		convert_pointer(ap, d);
-	 else if (format[d->pos] == 'f' || format[d->pos] == 'F')
+	else if (format[d->pos] == 'f' || format[d->pos] == 'F')
 	 	convert_double(ap, d);
+	if (format[d->pos] == 'b')
+		convert_binary(format, ap, d);
 }

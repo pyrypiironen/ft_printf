@@ -17,7 +17,7 @@
 #include <stdio.h> //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # include <stdarg.h>
 
-# define CONVERSION	"cspdiouxXf%"
+# define CONVERSION	"cspdiouxXf%b"
 # define FLAGS		"#0-+ "
 # define SPECIFIERS	"#0-+ .*0123456789hlL"
 
@@ -77,7 +77,7 @@ void	conversion(const char *format, va_list ap, t_struct *d);
 void	convert_int(va_list ap, t_struct *d);
 void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d);
-void	fill_print(t_struct *d, char *print); 					//diouxX
+void	fill_print(t_struct *d, char *print); 					//diouxXp
 void	plant_arg(t_struct *d, char *print, char *input);
 void	adjust_left(t_struct *d ,char *print);					//diouxXFcsp
 void	zero_precision_check(t_struct *d, char *print);
@@ -86,16 +86,16 @@ void	zero_precision_check(t_struct *d, char *print);
 void	convert_octal(va_list ap, t_struct *d);
 void	read_arg_unsigned(t_struct *d, va_list ap);					//ouxX
 char	*ft_itoa_base(unsigned long long n, int base);				//ouxX
-int		print_len_unsigned(t_struct *d, int len);					//ouxX
-void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ouxX
+int		print_len_unsigned(t_struct *d, int len);					//ouxXp
+void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ouxXp
 
 //		UNSIGNED DESIMAL
 void	convert_unsigned_int(va_list ap, t_struct *d);
 
 //		UNSIGNED HEXADESIMAL
 void	convert_hexadecimal(va_list ap, t_struct *d);
-void	to_lowercase(char *print);
-void	zero_precision_check_unsigned(char *print, t_struct *d);	//ox
+void	to_lowercase(char *print);									//p
+void	zero_precision_check_unsigned(char *print, t_struct *d);	//oxp
 
 //		CHARACTER
 void	convert_char(va_list ap, t_struct *d);
@@ -125,6 +125,12 @@ void	plant_arg_double(t_struct *d, char *print, char  *input);
 //		MODULO CHARACTER
 void	convert_modulo(t_struct *d);
 
+
+//		BINARY
+		void	convert_binary(const char *format, va_list ap, t_struct *d);
+		void    print_len_binary(t_struct *d);
+		void    fill_print_binary(t_struct *d, char *print, char *input);
+		char    *prepare_input(const char *format, va_list ap, t_struct *d);
 
 
 //		STRUCT SETTINGS
