@@ -71,10 +71,9 @@ char	*ft_dtoa(int precision, t_struct *d)
 		i++;
 	}
 	//
-	if (is_negative((d->arg_f) == 1)) //								 EI TOIMI
+	if (is_negative((d->arg_f) == 1))
 		arr[i] = '-';
 	//
-	printf("arr is %s\n", arr);
 	integral = ft_strduprev(arr);
 	fractional = fractional_toa(d->arg_f, precision, d);
 	return (ft_strjoin(integral, fractional));
@@ -228,7 +227,7 @@ void	rounders(t_struct *d)
 	d->arg_f += rounding;
 }
 
-int	is_negative(double nbr)
+int	ft_isnegative(double nbr)
 {
 	unsigned long long	*ull;
 	int					sign;
@@ -244,5 +243,4 @@ int	is_negative(double nbr)
 	if (sign == 0)
 		return (0);
 	return (1);
-	
 }
