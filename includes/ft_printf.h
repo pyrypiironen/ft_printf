@@ -112,11 +112,12 @@ void	convert_pointer(va_list ap, t_struct *d);
 
 //		DOUBLE
 void	convert_double(va_list ap, t_struct *d);
-//void	rounders(t_struct *d);
+void	rounders(t_struct *d);
 void	read_arg_double(t_struct *d, va_list ap);
-char	*pf_dtoa(int precision, t_struct *d);
+char	*dtoa(int precision, t_struct *d);
 int		is_negative(double nbr);
-//char	*fractional_part(long double n, int precision, t_struct *d);
+char	*fractional_part(long double n, int precision, t_struct *d);
+void	check_fractional(char *fractional);
 int		print_len_double(t_struct *d);
 void	fill_print_double(t_struct *d, char *print);
 void	plant_arg_double(t_struct *d, char *print, char  *input);

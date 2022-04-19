@@ -23,8 +23,9 @@ int main()
 	// test_conversion_p();
 	// test_modulo();
 	// test_asterix();
-	test_conversion_f();
-	 //filechecker();
+	 test_conversion_f();
+	// test_rounding_heavy();
+	// filechecker();
 
 
 }

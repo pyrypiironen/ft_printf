@@ -27,16 +27,13 @@ void	filechecker()
 	// ft_putendl("This is line after");
 
 
-	ft_putendl("\nInput: %");
-	my_return = ft_printf("My ft_printf: % $\n");
-	real_return = printf("Real  printf: % $\n");
+	ft_putendl("\nInput: ");
+	my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
+	real_return = printf("Real  printf: %*3d $\n", 5, 0);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
-	double a = 5.42;
-	a -= (int)a;
-	printf("a is %f\n", a);
 
 
 

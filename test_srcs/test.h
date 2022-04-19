@@ -30,6 +30,7 @@ void	test_conversion_f();
 void	test_modulo();
 void	test_asterix();
 void	test_binary();
+void	test_rounding_heavy();
 void	filechecker();
 
 #endif

@@ -12,10 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-static void	rounders(t_struct *d);
-static char	*fractional_part(long double n, int precision, t_struct *d);
-
-char	*pf_dtoa(int precision, t_struct *d)
+char	*dtoa(int precision, t_struct *d)
 {
 	int					i;
 	char				arr[24];
@@ -23,7 +20,6 @@ char	*pf_dtoa(int precision, t_struct *d)
 	char				*integral;
 	char				*fractional;
 
-	rounders(d);
 	i = 0;
 	k = (unsigned long long)d->arg_f;
 	ft_bzero(arr, 24);
@@ -41,11 +37,12 @@ char	*pf_dtoa(int precision, t_struct *d)
 		arr[i] = '-';
 	integral = ft_strduprev(arr);
 	fractional = fractional_part(d->arg_f, precision, d);
+	check_fractional(fractional);
 	return (ft_strjoin(integral, fractional));
 	// THERE IS MEMORY LEAK NOW
 }
 
-static char	*fractional_part(long double n, int precision, t_struct *d)
+char	*fractional_part(long double n, int precision, t_struct *d)
 {
 	char		arr[precision + 2];
 	int			i;
@@ -83,59 +80,23 @@ static char	*fractional_part(long double n, int precision, t_struct *d)
 	return (ft_strduprev(arr));
 }
 
-// static void	check_fractional(char *fractional)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (fractional[0] != '(' && fractional[0] != ')')
-// 		return ;
-// 	else
-// 	{
-// 		while (fractional[i] == '\0')
-// 			{
-// 				fractional[i] = '0';
-// 				i++;
-// 			}
-// 	}
-// }
-
-static void	rounders(t_struct *d)
+void	check_fractional(char *fractional)
 {
-	long double	nbr;
-	long double	rounding;
-	int			i;
-	i = 0;
-	
-	// check bankers
-		//long double	nbr;
-		char		*alpha;
-		nbr = d->arg_f;
-		//nbr -= (long long)nbr;
-		//if (precision != 0)
-		alpha = fractional_part(nbr, 19, d);
-		//printf("alpha : %s\n", alpha);
-		if (alpha != '\0')
-			i = ft_strlen(alpha) - 1;
-		while (alpha[i] == '9')
-			i--;
-		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1) 
-			return ;
-		i = ft_strlen(alpha) - 1;
-		while (alpha[i] == '0')
-			i--;
-		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1) 
-			return ;
-		
-	//
-	rounding = 0.5;
-	i = 0;
-	if (d->arg_f < 0)
-		rounding *= -1;
-	while (i < d->padding)
+	int	i;
+	int len;
+
+	i = 1;
+	if (fractional == NULL)
+		return ;
+	len = ft_strlen(fractional);
+	if (fractional[1] >= '0' && fractional[1] <= '9')
+		return ;
+	else
 	{
-		rounding /= 10.0;
-		i++;
+		while (i < len)
+			{
+				fractional[i] = '0';
+				i++;
+			}
 	}
-	d->arg_f += rounding;
 }
