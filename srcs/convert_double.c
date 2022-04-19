@@ -22,8 +22,8 @@ void	convert_double(va_list ap, t_struct *d)
 	if (d->padding == -1)
 		d->padding = 6;
 	read_arg_double(d, ap);
-	rounders(d);
-	input = ft_dtoa(d->padding, d);
+	//rounders(d);
+	input = pf_dtoa(d->padding, d);
 	d->input_len = ft_strlen(input);
 	d->print_len = print_len_double(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
@@ -46,75 +46,10 @@ void read_arg_double(t_struct *d, va_list ap)
 		d->arg_f = (long double)va_arg(ap, long double);
 	else
 		d->arg_f = (double)va_arg(ap, double);
-}
-
-char	*ft_dtoa(int precision, t_struct *d)
-{
-	int			i;
-	char		arr[24];//pituus
-	long long	k;
-	char		*integral;
-	char		*fractional;
-
-	//integral = ft_itoa(nbr);
-	i = 0;
-	k = (long long)d->arg_f;
-	ft_bzero(arr, 24);
-	if (d->arg_f < 0)
-		k = k * -1;
-	arr[i] = k % 10 + '0';
-	i++;
-	while (k / 10 > 0)
-	{
-		k = k / 10;
-		arr[i] = k % 10 + '0';
-		i++;
-	}
-	//
-	if (is_negative((d->arg_f) == 1))
-		arr[i] = '-';
-	//
-	integral = ft_strduprev(arr);
-	fractional = fractional_toa(d->arg_f, precision, d);
-	return (ft_strjoin(integral, fractional));
-	// there is memory leak now!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-}
-
-char	*fractional_toa(long double n, int precision, t_struct *d)
-{
-	char		arr[precision + 2];
-	int			i;
-	long long	k;
-
-	if (precision == 0 && d->hash == 1)
-		return (ft_strdup("."));
-	if (precision == 0)
-		return NULL;
-	//ft_bzero(arr, precision + 2);
-	i = 0;
-	//
-	n -= (long long)n;
-	//
-	while (i < precision)
-	{
-		n *= 10; 
-		i++;
-	}
-	i = 0;
-	while (precision > 0)
-	{
-		k = (long long)n;
-		if (k < 0)
-			k *= -1;
-		arr[i] = k % 10 + '0';
-		n /= 10;
-		i++;
-		precision--;
-	}
-	arr[i] = '.';
-	i++;
-	arr[i] = '\0';
-	return (ft_strduprev(arr));
+	// If argument value is negative the information will be saved to d->s_pad,
+	// because otherwise values -0 and 0 can't be distinguish later.
+	if (is_negative(d->arg_f) == 1)
+		d->s_pad = -1;
 }
 
 int	print_len_double(t_struct *d)
@@ -162,7 +97,7 @@ void	plant_arg_double(t_struct *d, char *print, char  *input)
 	i = d->print_len;
 	while (print[i] != ' ' && i > 0)
 		i--;
-	if (d->arg_f < 0)
+	if (d->s_pad == -1)
 		print[i] = '-';
 }
 
@@ -187,47 +122,8 @@ void	fill_print_double(t_struct *d, char *print)
 	}
 }
 
-void	rounders(t_struct *d)
-{
-	long double	nbr;
-	long double	rounding;
-	int			i;
-	i = 0;
-	
-	// check bankers
-		//long double	nbr;
-		char		*alpha;
-		nbr = d->arg_f;
-		//nbr -= (long long)nbr;
-		//if (precision != 0)
-		alpha = fractional_toa(nbr, 19, d);
-		//printf("alpha : %s\n", alpha);
-		if (alpha != '\0')
-			i = ft_strlen(alpha) - 1;
-		while (alpha[i] == '9')
-			i--;
-		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1) 
-			return ;
-		i = ft_strlen(alpha) - 1;
-		while (alpha[i] == '0')
-			i--;
-		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1) 
-			return ;
-		
-	//
-	rounding = 0.5;
-	i = 0;
-	if (d->arg_f < 0)
-		rounding *= -1;
-	while (i < d->padding)
-	{
-		rounding /= 10.0;
-		i++;
-	}
-	d->arg_f += rounding;
-}
 
-int	ft_isnegative(double nbr)
+int	is_negative(double nbr)
 {
 	unsigned long long	*ull;
 	int					sign;

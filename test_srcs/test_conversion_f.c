@@ -294,8 +294,15 @@ void	test_conversion_f()
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %Lf");
-	my_return = ft_printf("My ft_printf:  %Lf $\n", 1234567890123456789.42l);
-	real_return = printf("Real  printf:  %Lf $\n",  1234567890123456789.42l);
+	my_return = ft_printf("My ft_printf:  %Lf $\n", 18446744073709551615.42l);
+	real_return = printf("Real  printf:  %Lf $\n",  18446744073709551615.42l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+
+	ft_putendl("\nInput: %.35Lf");
+	my_return = ft_printf("My ft_printf:  %.35Lf $\n", 42.123456789012345678901234567890l);
+	real_return = printf("Real  printf:  %.35Lf $\n",  42.123456789012345678901234567890l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 }
