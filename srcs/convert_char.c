@@ -16,6 +16,7 @@ void	convert_char(va_list ap, t_struct *d)
 {
 	char		*print;
 
+	print_it(d);
 	d->arg = (char)va_arg(ap, int);
 	d->print_len = 1;
 	if (d->width > 1)

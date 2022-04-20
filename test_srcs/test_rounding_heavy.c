@@ -23,7 +23,7 @@ void	test_rounding_heavy()
 	ft_putendl("\n\n * * * * * * * * * * Heavy tests for rounding: * * * * * * * * * *\n");
 
 	// BASICS
-	ft_putendl("\n\n * * * * * BASICS -10 to 10 * * * * *");
+	ft_putendl("\n * * * * * BASICS -10 to 10 * * * * *");
 
 	d = -10.5555545;
 	ft_putendl("\nInput: %f");

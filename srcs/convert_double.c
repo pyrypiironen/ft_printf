@@ -33,7 +33,7 @@ void	convert_double(va_list ap, t_struct *d)
 	fill_print_double(d, print);
 	plant_arg_double(d, print, input);
 	adjust_left(d, print);
-	ft_putstr(print);
+	add_to_print(print, d);
 	d->res += ft_strlen(print); 
 	free(input);
 	free(print);

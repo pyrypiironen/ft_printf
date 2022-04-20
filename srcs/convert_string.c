@@ -17,6 +17,7 @@ void	convert_string(va_list ap, t_struct *d)
 	char *input;
 	char *print;
 
+
 	if (d->s_pad == -1)
 		d->padding = -1;
 	input = ft_strdup((char*)va_arg(ap, char*));
@@ -30,7 +31,15 @@ void	convert_string(va_list ap, t_struct *d)
 	print[d->print_len] = '\0';
 	fill_print_str(d, print, input);
 	adjust_left(d, print);
-	ft_putstr(print);
+	//
+	if (ft_strlen(print) + d->pos >= 420)
+	{
+		print_it(d);
+		ft_putstr(print);
+	}
+	else
+		add_to_print(print, d);
+	//
 	d->res += ft_strlen(print); 
 	free(input);
 	free(print);

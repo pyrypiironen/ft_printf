@@ -17,6 +17,7 @@ void	convert_hexadecimal(va_list ap, t_struct *d)
 	char		*input;
 	char		*print;
 
+	print_it(d);
 	read_arg_unsigned(d, ap);
 	input = ft_itoa_base(d->arg_o, 16);
 	d->input_len = ft_strlen(input);

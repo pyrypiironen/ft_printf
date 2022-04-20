@@ -23,6 +23,9 @@
 
 typedef struct		s_struct
 {
+	//					PRINTING
+	char				print[420];
+	int					ppos;
 	//					POSITION on format string
 	int					pos;
 	//					CONVERSION TYPE
@@ -128,15 +131,18 @@ void	convert_modulo(t_struct *d);
 
 
 //		BINARY
-		void	convert_binary(const char *format, va_list ap, t_struct *d);
-		void    print_len_binary(t_struct *d);
-		void    fill_print_binary(t_struct *d, char *print, char *input);
-		char    *prepare_input(const char *format, va_list ap, t_struct *d);
-
+void	convert_binary(const char *format, va_list ap, t_struct *d);
+void	print_len_binary(t_struct *d);
+void	fill_print_binary(t_struct *d, char *print, char *input);
+char	*prepare_input(const char *format, va_list ap, t_struct *d);
 
 //		STRUCT SETTINGS
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
+
+//		PRINT
+void	add_to_print(char *print, t_struct *d);
+void	print_it(t_struct *d);
 
 
 #endif

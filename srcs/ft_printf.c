@@ -37,7 +37,13 @@ int read_format(const char *format, va_list ap, t_struct *d)
 	{
 		if (format[d->pos] != '%')
 		{
-			write(1, &format[d->pos], 1);
+			if (d->ppos >= 420)
+			{
+				write(1, &d->print, d->ppos);
+				d->ppos = 0;
+			}
+			d->print[d->ppos] = format[d->pos];
+			d->ppos++;
 			d->res++;
 		}
 		else // == '%'
@@ -45,7 +51,6 @@ int read_format(const char *format, va_list ap, t_struct *d)
 			d->pos++;
 			if (is_conversion(format, d) == 1)
 			{
-				// check_flag_errors(d);
 				flags(format, d);
 				width(format, ap, d);
 				precision(format, ap, d);
@@ -58,5 +63,6 @@ int read_format(const char *format, va_list ap, t_struct *d)
 		d->pos++;
 		reset_struct(d);
 	}
+	write(1, &d->print, d->ppos);
 	return (d->res);
 }

@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   helpers_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 14:50:07 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/03/07 14:50:09 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/04/20 14:58:46 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/04/20 14:58:48 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_srcs/test.h"
+#include "../includes/ft_printf.h"
 
-int main()
+void	add_to_print(char *print, t_struct *d)
 {
-	// test_conversion_di();
-	// test_conversion_o();
-	// test_conversion_u();
-	// test_conversion_x();
-	// test_conversion_c();
-	// test_conversion_s();
-	// test_conversion_p();
-	// test_modulo();
-	// test_asterix();
-	 test_conversion_f();
-	 test_rounding_heavy();
-	// filechecker();
+	int	i;
+	int len;
 
+	i = 0;
+	len = ft_strlen(print);
+	if (d->ppos + len >= 420)
+	{
+		write(1, &d->print, d->ppos);
+		d->ppos = 0;
+	}
+	while (i < len)
+	{
+		d->print[d->ppos] = print[i];
+		d->ppos++;
+		i++;
+	}
+}
 
+void	print_it(t_struct *d)
+{
+	write(1, &d->print, d->ppos);
+	d->ppos = 0;
 }

@@ -37,7 +37,7 @@ void	convert_modulo(t_struct *d)
 		print[d->print_len - 1] = '%';
 	else
 		print[0] = '%';
-	ft_putstr(print);
+	add_to_print(print, d);
 	d->res += ft_strlen(print); 
 	free(print);
 }

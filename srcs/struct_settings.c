@@ -14,6 +14,7 @@
 
 void	set_struct(t_struct *d)
 {
+	d->ppos = 0;
 	d->conv_o = 0;
 	d->conv_x = 0;
 	d->conv_X = 0;

@@ -29,7 +29,7 @@ void	convert_int(va_list ap, t_struct *d)
 	plant_arg(d, print, input);
 	zero_precision_check(d, print);
 	adjust_left(d, print);
-	ft_putstr(print);
+	add_to_print(print, d);
 	d->res += ft_strlen(print); 
 	free(input);
 	free(print);

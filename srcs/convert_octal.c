@@ -30,7 +30,8 @@ void	convert_octal(va_list ap, t_struct *d)
 	plant_arg_unsigned(d, print, input);
 	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
-	ft_putstr(print);
+	//ft_putstr(print);
+	add_to_print(print, d);
 	d->res += ft_strlen(print); 
 	free(input);
 	free(print);
