@@ -64,8 +64,6 @@ int	print_len(t_struct *d)
 	return (len);
 }
 
-
-
 void	plant_arg(t_struct *d, char *print, char *input)
 {
 	int	i;

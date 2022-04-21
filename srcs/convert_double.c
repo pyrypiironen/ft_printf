@@ -39,6 +39,10 @@ void	convert_double(va_list ap, t_struct *d)
 	free(print);
 }
 
+
+
+
+
 void	rounders(t_struct *d)
 {
 	long double	rounding;
@@ -49,27 +53,101 @@ void	rounders(t_struct *d)
 	alpha = fractional_part(d->arg_f, 19, d);
 	if (alpha != '\0')
 		i = ft_strlen(alpha) - 1;
-	// Bankers rounding.
-	if ((long long)d->arg_f % 2 == 0)
+	//
+	long double	banker;
+	int			j;
+	banker = d->arg_f;
+	
+	j = 0;
+	while (j < d->padding)
 	{
-		while (alpha[i] == '9')
-			i--;
-		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1)
-			return ;
-		i = ft_strlen(alpha) - 1;
-		while (alpha[i] == '0')
-			i--;
-		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1)
-			return ;
+		banker *= 10;
+		j++;
 	}
+	j = 0;
+	while (j <= d->padding && j < 3)
+	{
+		int k;
+		k = 0;
+		while (k < 18)
+		{
+			alpha[k] = alpha[k + 1]; 
+			k++;
+		}
+		alpha[18] = '0';
+		j++;
+	}
+	printf("Banker: %Lf\n", banker);
+	printf("Alpha: %s\n",alpha);
+	//
+	// Bankers rounding.
+	//if ((long long)d->arg_f % 2 == 0)
+	// if ((long long)banker % 2 == 0)//new
+	// {
+	// 	while (alpha[i] == '9')
+	// 		i--;
+	// 	if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1)
+	// 		return ;
+	// 	i = ft_strlen(alpha) - 1;
+	// 	while (alpha[i] == '0')
+	// 		i--;
+	// 	if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1)
+	// 		return ;
+	// }
 	rounding = 0.5;
 	i = 0;
+	if (ft_strcmp(alpha, "50000000000000000000") == 0 && ((long long)banker % 2 == 0) && d->padding < 3)
+	{
+		//ft_putendl("here");
+		rounding = -0.0;
+	}
 	if (d->arg_f < 0)
+	{
+		//ft_putendl("heere");
 		rounding *= -1;
+	}
 	while (i < d->padding)
 	{
 		rounding /= 10.0;
 		i++;
 	}
+	printf("arg before rounding: %.19Lf\n", d->arg_f);
 	d->arg_f += rounding;
+	printf("arg after rounding:  %.19Lf\n", d->arg_f);
 }
+
+//OLD VERSION
+// void	rounders(t_struct *d)
+// {
+// 	long double	rounding;
+// 	char		*alpha;//not memory allocated
+// 	int			i;
+
+// 	i = 0;
+// 	alpha = fractional_part(d->arg_f, 19, d);
+// 	if (alpha != '\0')
+// 		i = ft_strlen(alpha) - 1;
+// 	// Bankers rounding.
+// 	if ((long long)d->arg_f % 2 == 0)
+// 	{
+// 		while (alpha[i] == '9')
+// 			i--;
+// 		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1)
+// 			return ;
+// 		i = ft_strlen(alpha) - 1;
+// 		while (alpha[i] == '0')
+// 			i--;
+// 		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1)
+// 			return ;
+// 	}
+// 	rounding = 0.5;
+// 	i = 0;
+// 	if (d->arg_f < 0)
+// 		rounding *= -1;
+// 	while (i < d->padding)
+// 	{
+// 		rounding /= 10.0;
+// 		i++;
+// 	}
+// 	d->arg_f += rounding;
+// }

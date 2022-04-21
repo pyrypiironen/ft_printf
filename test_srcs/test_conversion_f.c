@@ -161,6 +161,18 @@ void	test_conversion_f()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %0 f ");
+	my_return = ft_printf("My ft_printf: %0 f $\n", -0.0);
+	real_return = printf("Real  printf: %0 f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %+0f ");
+	my_return = ft_printf("My ft_printf: %+0f $\n", -0.0);
+	real_return = printf("Real  printf: %+0f $\n", -0.0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// ROUNDING
 	ft_putendl("\n\n * * * * * Rounding:  * * * * *");
 

@@ -30,7 +30,7 @@ int	print_len_double(t_struct *d)
 
 	len = d->input_len;
 	// Count space for '+' or ' ' flag if argument is non-negative.
-	if ((d->plus == 1 || d->space == 1) && d->arg_f >= 0)
+	if ((d->plus == 1 || d->space == 1) && d->s_pad == 0)
 		len++;
 	// If minimum field width is specified and is longer than len, use it
 	// as len. In this case '+' and ' ' flags don't need extra space.
@@ -52,7 +52,7 @@ void	plant_arg_double(t_struct *d, char *print, char *input)
 	}
 	// Plant plus if there is '+' flag and argument is non-negative.
 	i = d->print_len;
-	if (d->plus == 1 && d->arg_f >= 0)
+	if (d->plus == 1 && d->s_pad == 0)
 	{
 		while (print[i] == '0' && i > 0)
 			i--;

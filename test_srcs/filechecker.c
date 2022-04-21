@@ -20,28 +20,41 @@ void	filechecker()
 	//char *a1 = "Hello";
 
 
-	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
+	ft_putendl("\nInput: ");
+	my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
+	real_return = printf("Real  printf: %*3d $\n", 5, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	 ft_putendl("This is line before.");
-	 printf("%");
-	 ft_putendl("This is line after.");
+	ft_putendl("\nInput: %.2f ");
+	my_return = ft_printf("My ft_printf: %.2f $\n", -958.125000);
+	real_return = printf("Real  printf: %.2f $\n", -958.125000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %0#10.1f $\n", 0.250000);
+	real_return = printf("Real  printf: %0#10.1f $\n", 0.250000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	// ft_putendl("\nInput: ");
-	// my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
-	// real_return = printf("Real  printf: %*3d $\n", 5, 0);
-	// if(my_return != real_return)
-	// 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %0#10.1f $\n", 0.150000);
+	real_return = printf("Real  printf: %0#10.1f $\n", 0.150000);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %0#10.1f ");
+	my_return = ft_printf("My ft_printf: %f $\n", 2.5555545);
+	real_return = printf("Real  printf: %f $\n", 2.5555545);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-
-
-
-// >>>> bonus_03_wildcard_flag_mix.sp [FAIL] FF [FAIL] digit_wildcard_and_min_width_value3 -> printf("{%*3d}", 5, 0)
-// [ ----------END OF UNIT TESTS---------- ]
-
-
-
+ft_putendl("\nInput: %.3f ");
+	my_return = ft_printf("My ft_printf: %.3f $\n", 0.000500);
+	real_return = printf("Real  printf: %.3f $\n", 0.000500);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
 }

@@ -19,21 +19,25 @@ void	set_struct(t_struct *d)
 	d->conv_x = 0;
 	d->conv_X = 0;
 	d->conv_p = 0;
-	d->pos = 0;     // do not copy to reset
+	d->pos = 0;
 	d->hash = 0;
 	d->zero = 0;
 	d->plus = 0;
 	d->minus = 0;
 	d->space = 0;
 	d->width = 0;
-	d->padding = -1;	// -1 is default because zero is significant
+	d->padding = -1;
+	d->s_pad = 0;
+	// -1 is default because zero is significant
 	d->s_pad = 0;
 	d->mod_h = 0;
 	d->mod_hh = 0;
 	d->mod_l = 0;
 	d->mod_ll = 0;
 	d->mod_L = 0;
-	d->res = 0;		// do not copy to reset
+	d->arg = -1;
+	d->arg_o = 0;
+	d->res = 0;
 }
 
 void	reset_struct(t_struct *d)
@@ -50,9 +54,12 @@ void	reset_struct(t_struct *d)
 	d->width = 0;
 	d->padding = -1;
 	d->s_pad = 0;
+	d->s_pad = 0;
 	d->mod_h = 0;
 	d->mod_hh = 0;
 	d->mod_l = 0;
 	d->mod_ll = 0;
 	d->mod_L = 0;
+	d->arg = -1;
+	d->arg_o = 0;
 }
