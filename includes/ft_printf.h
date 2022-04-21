@@ -66,83 +66,77 @@ typedef struct		s_struct
 int		ft_printf(const char *format, ...);
 int		read_format(const char *format, va_list ap, t_struct *d);
 
-//		READ SPECIFIERS
+//		* * * * * READ SPECIFIERS * * * * *
 int		is_conversion(const char *format, t_struct *d);
 void	flags(const char *format, t_struct *d);
 void	width(const char *format, va_list ap, t_struct *d);
 void	precision(const char *format, va_list ap, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
 
-//		CONVERSION TYPE
+//		* * * * * CONVERSION TABLE * * * * *
 void	conversion(const char *format, va_list ap, t_struct *d);
 
-//		SIGNED DESIMAL
+//		* * * * * SOME CONVERTS * * * * *
+void	convert_octal(va_list ap, t_struct *d);
+void	convert_unsigned_int(va_list ap, t_struct *d);
+void	convert_hexadecimal(va_list ap, t_struct *d);
+void	convert_pointer(va_list ap, t_struct *d);
+void	convert_modulo(t_struct *d);
+
+//		* * * * * HELPERS COMMON * * * * *
+void	fill_print(t_struct *d, char *print);
+void	adjust_left(t_struct *d ,char *print);
+void	to_lowercase(char *print);
+
+//		* * * * * HELPERS UNSIGNED * * * * *
+void	read_arg_unsigned(t_struct *d, va_list ap);
+int		print_len_unsigned(t_struct *d, int len);
+void	plant_arg_unsigned(t_struct *d, char *print, char  *input);
+void	zero_precision_check_unsigned(char *print, t_struct *d);
+
+//		* * * * * SIGNED DESIMAL * * * * *
 void	convert_int(va_list ap, t_struct *d);
 void	read_arg(t_struct *d, va_list ap);
 int		print_len(t_struct *d);
-void	fill_print(t_struct *d, char *print); 					//diouxXp
 void	plant_arg(t_struct *d, char *print, char *input);
-void	adjust_left(t_struct *d ,char *print);					//diouxXFcsp
 void	zero_precision_check(t_struct *d, char *print);
 
-//		UNSIGNED OCTAL
-void	convert_octal(va_list ap, t_struct *d);
-void	read_arg_unsigned(t_struct *d, va_list ap);					//ouxX
-char	*ft_itoa_base(unsigned long long n, int base);				//ouxX
-int		print_len_unsigned(t_struct *d, int len);					//ouxXp
-void	plant_arg_unsigned(t_struct *d, char *print, char  *input); //ouxXp
-
-//		UNSIGNED DESIMAL
-void	convert_unsigned_int(va_list ap, t_struct *d);
-
-//		UNSIGNED HEXADESIMAL
-void	convert_hexadecimal(va_list ap, t_struct *d);
-void	to_lowercase(char *print);									//p
-void	zero_precision_check_unsigned(char *print, t_struct *d);	//oxp
-
-//		CHARACTER
+//		* * * * * CHARACTER * * * * *
 void	convert_char(va_list ap, t_struct *d);
 void	adjust_left_char(t_struct *d ,char *print);
 void	fill_print_char(t_struct *d, char *print);
 
-//		CHARACTER STRING
+//		* * * * * CHARACTER STRING * * * * *
 void	convert_string(va_list ap, t_struct *d);
 void	fill_print_str(t_struct *d, char *print, char *input);
 void	print_len_str(t_struct *d);
 
-//		VOID POINTER
-void	convert_pointer(va_list ap, t_struct *d);
-
-//		DOUBLE
+//		* * * * * DOUBLE * * * * *
 void	convert_double(va_list ap, t_struct *d);
 void	rounders(t_struct *d);
+//		* * HELPERS DOUBLE * *
 void	read_arg_double(t_struct *d, va_list ap);
-char	*dtoa(int precision, t_struct *d);
-int		is_negative(double nbr);
-char	*fractional_part(long double n, int precision, t_struct *d);
-void	check_fractional(char *fractional);
 int		print_len_double(t_struct *d);
 void	fill_print_double(t_struct *d, char *print);
 void	plant_arg_double(t_struct *d, char *print, char  *input);
+int		is_negative(double nbr);
+//		* * DTOA * *
+char	*dtoa(int precision, t_struct *d);
+char	*fractional_part(long double n, int precision, t_struct *d);
+void	check_fractional(char *fractional);
 
-
-//		MODULO CHARACTER
-void	convert_modulo(t_struct *d);
-
-
-//		BINARY
+//		* * * * * BINARY * * * * *
 void	convert_binary(const char *format, va_list ap, t_struct *d);
 void	print_len_binary(t_struct *d);
 void	fill_print_binary(t_struct *d, char *print, char *input);
 char	*prepare_input(const char *format, va_list ap, t_struct *d);
 
-//		STRUCT SETTINGS
+//		* * * * *STRUCT SETTINGS * * * * *
 void	set_struct(t_struct *d);
 void	reset_struct(t_struct *d);
 
-//		PRINT
+//		* * * * * PRINT * * * * *
 void	add_to_print(char *print, t_struct *d);
 void	print_it(t_struct *d);
-
 
 #endif

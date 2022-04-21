@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 14:50:07 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/03/07 14:50:09 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/04/21 16:24:05 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/04/21 16:24:07 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_srcs/test.h"
+#include "libft.h"
 
-int main()
+char	*ft_itoa_base(unsigned long long n, int base)
 {
-	// test_conversion_di();
-	 test_conversion_o();
-	// test_conversion_u();
-	// test_conversion_x();
-	// test_conversion_c();
-	// test_conversion_s();
-	// test_conversion_p();
-	// test_modulo();
-	// test_asterix();
-	// test_conversion_f();
-	//test_rounding_heavy();
-	// test_binary();
-	//filechecker();
+	int		i;
+	char	arr[64];
+	char	*hexa;
 
-
-
+	i = 0;
+	hexa = "0123456789ABCDEF";
+	if (n == 0)
+		return (ft_strdup("0"));
+	while (n > 0)
+	{
+		arr[i] = hexa[n % base];
+		i++;
+		n = n / base;
+	}
+	arr[i] = '\0';
+	return (ft_strduprev(arr));
 }
