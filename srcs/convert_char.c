@@ -30,7 +30,7 @@ void	convert_char(va_list ap, t_struct *d)
 	if (d->width == 0)
 		d->width = 1;
 	write(1, print, d->width);
-	d->res += d->width; 
+	d->res += d->width;
 	free(print);
 }
 
@@ -53,7 +53,7 @@ void	fill_print_char(t_struct *d, char *print)
 	print[i] = d->arg;
 }
 
-void	adjust_left_char(t_struct *d ,char *print)
+void	adjust_left_char(t_struct *d, char *print)
 {
 	int	i;
 	int	k;

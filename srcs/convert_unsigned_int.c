@@ -30,7 +30,7 @@ void	convert_unsigned_int(va_list ap, t_struct *d)
 	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }

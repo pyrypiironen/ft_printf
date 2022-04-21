@@ -30,9 +30,8 @@ void	convert_octal(va_list ap, t_struct *d)
 	plant_arg_unsigned(d, print, input);
 	zero_precision_check_unsigned(print, d);
 	adjust_left(d, print);
-	//ft_putstr(print);
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }
@@ -75,14 +74,14 @@ int	print_len_unsigned(t_struct *d, int len)
 {
 	// Count space for '0' if conversion type is 'o', argument value is non-zero
 	// and there is '#' flag.
-	if (d->hash == 1 && d->conv_o == 1 && d->arg_o != 0)//hox
+	if (d->hash == 1 && d->conv_o == 1 && d->arg_o != 0)						//hox
 		len++;
 	// If padding is longer than len, use it as len.
 	if (d->padding > len)
 		len = d->padding;
 	// Count space for prefix if conversion type is 'x' or 'X',
 	// result is non-zero and there is '#' flag. Or if conversion type is 'p'.
-	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0)\
+	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0) \
 		|| d->conv_p == 1)
 		len += 2;
 	// If minimum field width is longer than len, use it as len.
@@ -91,7 +90,7 @@ int	print_len_unsigned(t_struct *d, int len)
 	return (len);
 }
 
-void	plant_arg_unsigned(t_struct *d, char *print, char  *input)
+void	plant_arg_unsigned(t_struct *d, char *print, char *input)
 {
 	while (d->input_len >= 0)
 	{
@@ -114,7 +113,7 @@ void	plant_arg_unsigned(t_struct *d, char *print, char  *input)
 		d->print_len = 1;
 	// Plant prefix if conversion type is 'x' or 'X', result is non-zero
 	// and there is '#' flag.  Or if conversion type is 'p'.
-	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0)\
+	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0) \
 		|| d->conv_p == 1)
 	{
 		print[d->print_len] = 'X';

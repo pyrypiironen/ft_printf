@@ -30,7 +30,7 @@ void	convert_int(va_list ap, t_struct *d)
 	zero_precision_check(d, print);
 	adjust_left(d, print);
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }
@@ -74,9 +74,9 @@ void	fill_print(t_struct *d, char *print)
 	// Else it will be filled by spaces (' ').
 	i = d->width - 1;
 	j = d->print_len - 1;
-	while (i >= 0 )
+	while (i >= 0)
 	{
-		if(d->padding == -1 && d->zero == 1 && d->minus == 0)
+		if (d->padding == -1 && d->zero == 1 && d->minus == 0)
 			print[j] = '0';
 		else
 			print[j] = ' ';
@@ -87,7 +87,7 @@ void	fill_print(t_struct *d, char *print)
 	// amount of 0's.
 	i = d->padding - 1;
 	j = d->print_len - 1;
-	while (i >= 0 )
+	while (i >= 0)
 	{
 		print[j] = '0';
 		i--;
@@ -95,7 +95,7 @@ void	fill_print(t_struct *d, char *print)
 	}
 }
 
-void	plant_arg(t_struct *d, char *print, char  *input)
+void	plant_arg(t_struct *d, char *print, char *input)
 {
 	int	i;
 
@@ -110,14 +110,14 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 	i = d->print_len;
 	if (d->plus == 1 && d->arg >= 0)
 	{
-		while(print[i] == '0' && i > 0)
+		while (print[i] == '0' && i > 0)
 			i--;
 		print[i] = '+';
 	}
 	// Plant space if there is ' ' flag.
 	else if (d->space == 1)
 	{
-		while(print[i] == '0' && i > 0)
+		while (print[i] == '0' && i > 0)
 			i--;
 		print[i] = ' ';
 	}
@@ -129,7 +129,7 @@ void	plant_arg(t_struct *d, char *print, char  *input)
 		print[i] = '-';
 }
 
-void	adjust_left(t_struct *d ,char *print)
+void	adjust_left(t_struct *d, char *print)
 {
 	int	i;
 	int j;

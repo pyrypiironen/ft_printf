@@ -19,7 +19,8 @@ int	ft_printf(const char *format, ...)
 	t_struct	*data;
 	int			ret;
 
-	//if format is NULL >> return something
+	if ((format[0] == '%' && format[1] == '\0') || format[0] == '\0')
+		return (0);
 	data = (t_struct*)malloc(sizeof(t_struct));
 	if (data == NULL)
 		return (0);
@@ -27,7 +28,7 @@ int	ft_printf(const char *format, ...)
 	va_start(ap, format);
 	ret = read_format(format, ap, data);
 	va_end(ap);
-	//free what must to be freed
+	free(data);
 	return (ret);
 }
 
@@ -46,7 +47,7 @@ int read_format(const char *format, va_list ap, t_struct *d)
 			d->ppos++;
 			d->res++;
 		}
-		else // == '%'
+		else
 		{
 			d->pos++;
 			if (is_conversion(format, d) == 1)

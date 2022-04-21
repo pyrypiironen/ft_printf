@@ -22,16 +22,16 @@ void	filechecker()
 
 	ft_putendl("\n\n * * * * * * * * * * Some of my 42FileChecker errors:  * * * * * * * * * *\n");
 
-	// ft_putendl("This is line before.");
-	// ft_printf("%");
-	// ft_putendl("This is line after");
+	 ft_putendl("This is line before.");
+	 printf("%");
+	 ft_putendl("This is line after.");
 
 
-	ft_putendl("\nInput: ");
-	my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
-	real_return = printf("Real  printf: %*3d $\n", 5, 0);
-	if(my_return != real_return)
-		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+	// ft_putendl("\nInput: ");
+	// my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
+	// real_return = printf("Real  printf: %*3d $\n", 5, 0);
+	// if(my_return != real_return)
+	// 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 
 

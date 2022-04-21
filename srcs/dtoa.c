@@ -44,8 +44,8 @@ char	*dtoa(int precision, t_struct *d)
 
 char	*fractional_part(long double n, int precision, t_struct *d)
 {
-	char		arr[precision + 2];
-	int			i;
+	char				arr[precision + 2];
+	int					i;
 	long long	k;
 
 	if (precision == 0 && d->hash == 1)

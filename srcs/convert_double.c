@@ -34,13 +34,12 @@ void	convert_double(va_list ap, t_struct *d)
 	plant_arg_double(d, print, input);
 	adjust_left(d, print);
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
-
 }
 
-void read_arg_double(t_struct *d, va_list ap)
+void	read_arg_double(t_struct *d, va_list ap)
 {
 	if (d->mod_L == 1)
 		d->arg_f = (long double)va_arg(ap, long double);
@@ -67,7 +66,7 @@ int	print_len_double(t_struct *d)
 	return (len);
 }
 
-void	plant_arg_double(t_struct *d, char *print, char  *input)
+void	plant_arg_double(t_struct *d, char *print, char *input)
 {
 	int	i;
 
@@ -82,14 +81,14 @@ void	plant_arg_double(t_struct *d, char *print, char  *input)
 	i = d->print_len;
 	if (d->plus == 1 && d->arg_f >= 0)
 	{
-		while(print[i] == '0' && i > 0)
+		while (print[i] == '0' && i > 0)
 			i--;
 		print[i] = '+';
 	}
 	// Plant space if there is ' ' flag.
 	else if (d->space == 1)
 	{
-		while(print[i] == '0' && i > 0)
+		while (print[i] == '0' && i > 0)
 			i--;
 		print[i] = ' ';
 	}
@@ -111,9 +110,9 @@ void	fill_print_double(t_struct *d, char *print)
 	// Else it will be filled by spaces (' ').
 	i = d->width - 1;
 	j = d->print_len - 1;
-	while (i >= 0 )
+	while (i >= 0)
 	{
-		if(d->zero == 1 && d->minus == 0)
+		if (d->zero == 1 && d->minus == 0)
 			print[j] = '0';
 		else
 			print[j] = ' ';
@@ -121,7 +120,6 @@ void	fill_print_double(t_struct *d, char *print)
 		j--;
 	}
 }
-
 
 int	is_negative(double nbr)
 {
@@ -146,20 +144,24 @@ void	rounders(t_struct *d)
 	long double	rounding;
 	char		*alpha;//not memory allocated
 	int			i;
-	
+
 	i = 0;
 	alpha = fractional_part(d->arg_f, 19, d);
 	if (alpha != '\0')
 		i = ft_strlen(alpha) - 1;
-	while (alpha[i] == '9')
-		i--;
-	if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1) 
-		return ;
-	i = ft_strlen(alpha) - 1;
-	while (alpha[i] == '0')
-		i--;
-	if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1) 
-		return ;
+	// Bankers rounding.
+	if ((long long)d->arg_f % 2 == 0)
+	{
+		while (alpha[i] == '9')
+			i--;
+		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1)
+			return ;
+		i = ft_strlen(alpha) - 1;
+		while (alpha[i] == '0')
+			i--;
+		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1)
+			return ;
+	}
 	rounding = 0.5;
 	i = 0;
 	if (d->arg_f < 0)

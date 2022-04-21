@@ -32,7 +32,7 @@ void	convert_pointer(va_list ap, t_struct *d)
 	to_lowercase(print);
 	zero_precision_check_unsigned(print, d);
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }

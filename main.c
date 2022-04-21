@@ -24,8 +24,10 @@ int main()
 	// test_modulo();
 	// test_asterix();
 	 test_conversion_f();
-	 test_rounding_heavy();
-	// filechecker();
+	//test_rounding_heavy();
+	// test_binary();
+	//filechecker();
+
 
 
 }

@@ -12,11 +12,10 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_string(va_list ap, t_struct *d)
+void	convert_string(va_list ap, t_struct *d) //26 lines
 {
-	char *input;
-	char *print;
-
+	char	*input;
+	char	*print;
 
 	if (d->s_pad == -1)
 		d->padding = -1;
@@ -31,7 +30,6 @@ void	convert_string(va_list ap, t_struct *d)
 	print[d->print_len] = '\0';
 	fill_print_str(d, print, input);
 	adjust_left(d, print);
-	//
 	if (ft_strlen(print) + d->pos >= 420)
 	{
 		print_it(d);
@@ -39,12 +37,10 @@ void	convert_string(va_list ap, t_struct *d)
 	}
 	else
 		add_to_print(print, d);
-	//
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(input);
 	free(print);
 }
-
 
 void	fill_print_str(t_struct *d, char *print, char *input)
 {

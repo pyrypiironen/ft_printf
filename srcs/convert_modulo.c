@@ -12,16 +12,16 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_modulo(t_struct *d)
+void	convert_modulo(t_struct *d) // 26 lines
 {
 	char	*print;
-	int	i;
+	int		i;
 
 	i = 0;
 	d->print_len = 1;
 	if (d->width > 1)
 		d->print_len = d->width;
-		print = (char *)malloc(sizeof(*print) * d->print_len + 1);
+	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
 		exit(0);
 	print[d->print_len] = '\0';
@@ -38,6 +38,6 @@ void	convert_modulo(t_struct *d)
 	else
 		print[0] = '%';
 	add_to_print(print, d);
-	d->res += ft_strlen(print); 
+	d->res += ft_strlen(print);
 	free(print);
 }

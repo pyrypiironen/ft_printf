@@ -12,12 +12,12 @@
 
 #include "../includes/ft_printf.h"
 
-void	conversion(const char *format, va_list ap, t_struct *d)
+void	conversion(const char *format, va_list ap, t_struct *d) //26 lines
 {
 	if (format[d->pos] == 'd' || format[d->pos] == 'i')
 		convert_int(ap, d);
 	else if (format[d->pos] == 'o')
-		convert_octal(ap,  d);
+		convert_octal(ap, d);
 	else if (format[d->pos] == 'u')
 		convert_unsigned_int(ap, d);
 	else if (format[d->pos] == 'x' || format[d->pos] == 'X')
@@ -37,7 +37,7 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 	else if (format[d->pos] == 'p')
 		convert_pointer(ap, d);
 	else if (format[d->pos] == 'f' || format[d->pos] == 'F')
-	 	convert_double(ap, d);
+		convert_double(ap, d);
 	if (format[d->pos] == 'b')
 		convert_binary(format, ap, d);
 }
