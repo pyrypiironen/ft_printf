@@ -63,22 +63,24 @@ typedef struct		s_struct
 	int					res;
 }						t_struct;
 
-
+//		* * * * * FT_PRINTF * * * * *
 int		ft_printf(const char *format, ...);
 int		read_format(const char *format, va_list ap, t_struct *d);
 void	check_conversion(const char *format, va_list ap, t_struct *d);
 
 //		* * * * * READ SPECIFIERS * * * * *
-int		is_conversion(const char *format, t_struct *d);
 void	flags(const char *format, t_struct *d);
 void	width(const char *format, va_list ap, t_struct *d);
 int		width_numbers(const char *format, t_struct *d);
 void	precision(const char *format, va_list ap, t_struct *d);
+void	precision_asterix_check(const char *format, va_list ap, t_struct *d);
+//		* * READ SPECIFIERS 2 * *
 void	modifiers(const char *format, t_struct *d);
 
-//		* * * * * CONVERSION TABLE * * * * *
+//		* * * * * CONVERSION * * * * *
 void	conversion(const char *format, va_list ap, t_struct *d);
 void	conversion_bonus(const char *format, va_list ap, t_struct *d);
+int		is_conversion(const char *format, t_struct *d);
 
 //		* * * * * SOME CONVERTS * * * * *
 void	convert_octal(va_list ap, t_struct *d);

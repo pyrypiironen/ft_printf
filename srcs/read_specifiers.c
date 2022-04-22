@@ -82,26 +82,10 @@ void	precision(const char *format, va_list ap, t_struct *d)
 	{
 		d->pos++;
 		while (ft_strchr("0123456789", format[d->pos]) != NULL)
-		{
-			str[i] = format[d->pos];
-			i++;
-			d->pos++;
-		}
+			str[i++] = format[d->pos++];
 		//If there is no precision given by numbers check asterix.
 		if (i == 0)
-		{
-			if (format[d->pos] == '*')
-			{
-				d->padding = va_arg(ap, int);
-				d->pos++;
-				if (d->padding < 0)
-				{
-					d->padding = -2;
-					d->s_pad = -1;
-					d->asterix = 1;
-				}
-			}
-		}
+			precision_asterix_check(format, ap, d);
 		str[i] = '\0';
 		if (i > 0)
 			d->padding = ft_atoi(str);
@@ -110,31 +94,17 @@ void	precision(const char *format, va_list ap, t_struct *d)
 	}
 }
 
-void	modifiers(const char *format, t_struct *d)
+void	precision_asterix_check(const char *format, va_list ap, t_struct *d)
 {
-	if (format[d->pos] == 'h' && format[d->pos + 1] == 'h')
+	if (format[d->pos] == '*')
 	{
-		d->mod_hh = 1;
-		d->pos = d->pos + 2;
-	}
-	else if (format[d->pos] == 'l' && format[d->pos + 1] == 'l')
-	{
-		d->mod_ll = 1;
-		d->pos = d->pos + 2;
-	}
-	else if (format[d->pos] == 'h')
-	{
-		d->mod_h = 1;
+		d->padding = va_arg(ap, int);
 		d->pos++;
-	}
-	else if (format[d->pos] == 'l')
-	{
-		d->mod_l = 1;
-		d->pos++;
-	}
-	else if (format[d->pos] == 'L')
-	{
-		d->mod_L = 1;
-		d->pos++;
+		if (d->padding < 0)
+		{
+			d->padding = -2;
+			d->s_pad = -1;
+			d->asterix = 1;
+		}
 	}
 }

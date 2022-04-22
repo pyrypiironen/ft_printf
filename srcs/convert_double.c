@@ -65,6 +65,7 @@ void	rounders(t_struct *d)
 		j++;
 	}
 	bankers_rounding(d, banker, alpha);
+	free(alpha);
 }
 
 void	bankers_rounding(t_struct *d, long double banker, char *alpha)

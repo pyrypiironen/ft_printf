@@ -23,12 +23,12 @@ void	convert_modulo(t_struct *d)
 		d->print_len = d->width;
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
-		exit(0);
+		exit(-1);
 	print[d->print_len] = '\0';
 	while (i < d->width)
 	{
 		if (d->zero == 1 && d->minus == 0)
-			print[i] = '0';
+			print[i++] = '0';
 		else
 			print[i++] = ' ';
 	}
