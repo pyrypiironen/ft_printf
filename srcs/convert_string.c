@@ -32,13 +32,13 @@ void	convert_string(va_list ap, t_struct *d)
 	adjust_left(d, print);
 	d->res += ft_strlen(print);
 	if (ft_strlen(print) + d->pos >= 420)
-	{
 		print_it(d);
-		ft_putstr_free(print);
-	}
+	if (ft_strlen(print) + d->pos >= 420)
+		ft_putstr(print);
 	else
 		add_to_print(print, d);
 	free(input);
+	free(print);
 }
 
 void	fill_print_str(t_struct *d, char *print, char *input)
