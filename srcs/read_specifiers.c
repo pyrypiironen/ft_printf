@@ -65,15 +65,26 @@ void	width(const char *format, va_list ap, t_struct *d)
 	{
 		if (format[d->pos] == '*')
 		{
-					d->width = va_arg(ap, int);
-					if(d->width < 0)
-					{
-						d->width *= -1;
-						d->minus = 1;
-					}
-					d->pos++;
+			d->width = va_arg(ap, int);
+			if(d->width < 0)
+			{
+				d->width *= -1;
+				d->minus = 1;
+			}
+				d->pos++;
 		}
 	}
+	if (i > 0)
+		d->width = ft_atoi(str);
+
+	i = 0;
+	while (ft_strchr("0123456789", format[d->pos]) != NULL)
+	{
+		str[i] = format[d->pos];
+		i++;
+		d->pos++;
+	}
+	str[i] = '\0';
 	if (i > 0)
 		d->width = ft_atoi(str);
 }
@@ -101,8 +112,9 @@ void	precision(const char *format, va_list ap, t_struct *d)
 				d->pos++;
 				if (d->padding < 0)
 				{
-					d->padding = 1;
+					d->padding = -2;
 					d->s_pad = -1;
+					d->asterix = 1;
 				}
 			}
 		}

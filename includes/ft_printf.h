@@ -41,6 +41,7 @@ typedef struct		s_struct
 	int					space;
 	//					MINIMUM FIELD WIDTH (value)
 	int					width;
+	int					asterix;
 	//					PRECISION (value)
 	//					** -1 is default, because zero is significant.
 	int					padding;

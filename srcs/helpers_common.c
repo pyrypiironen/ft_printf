@@ -24,7 +24,8 @@ void	fill_print(t_struct *d, char *print)
 	j = d->print_len - 1;
 	while (i >= 0)
 	{
-		if (d->padding == -1 && d->zero == 1 && d->minus == 0)
+		if ((d->padding == -1 && d->zero == 1 && d->minus == 0) \
+			|| (d->asterix == 1 && d->zero == 1 && d->minus == 0))
 			print[j] = '0';
 		else
 			print[j] = ' ';

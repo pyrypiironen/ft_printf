@@ -68,13 +68,13 @@ void	test_asterix()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %*s (maybe undefined behavior)");
+	ft_putendl("\nInput: %*s");
 	my_return = ft_printf("My ft_printf: %*x $\n", 12, 42);
 	real_return = printf("Real  printf: %*x $\n", 12, 42);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %*c (maybe undefined behavior)");
+	ft_putendl("\nInput: %*c");
 	my_return = ft_printf("My ft_printf: %*x $\n", 12, 42);
 	real_return = printf("Real  printf: %*x $\n", 12, 42);
 	if(my_return != real_return)
@@ -119,6 +119,18 @@ void	test_asterix()
 	ft_putendl("\nInput: %.*s");
 	my_return = ft_printf("My ft_printf: %.*s $\n", -1, 0);
 	real_return = printf("Real  printf: %.*s $\n", -1, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %*3d");
+	my_return = ft_printf("My ft_printf: %*3d $\n", 5, 0);
+	real_return = printf("Real  printf: %*3d $\n", 5, 0);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %05.*d");
+	my_return = ft_printf("My ft_printf: %05.*d $\n", -15, 42);
+	real_return = printf("Real  printf: %05.*d $\n", -15, 42);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 

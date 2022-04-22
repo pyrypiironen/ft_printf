@@ -87,7 +87,7 @@ void	test_rounding_heavy()
 	}
 
 	// HARD: 15 DIGITS WITH PRECISION OF 18
-	ft_putendl("\n\n * * * * * 15 digits with precision of 18 (4200 to -4200 minus by 420) * * * * *");
+	ft_putendl("\n\n * * * * * 15 digits with precision of 17 (4200 to -4200 minus by 420) * * * * *");
 	d = 2400.555555555555545;
 	ft_putendl("\nInput: %.18f");
 	ft_putendl("Fractional: .555555555555545\n");
@@ -101,10 +101,10 @@ void	test_rounding_heavy()
 		d -= 240;
 	}
 
-	// LONG DOUBLE WITH PRECISION OF 18
+	// LONG DOUBLE WITH PRECISION OF 17
 	ft_putendl("\n\n * * * * * Long double with precision of 18 * * * * *");
 	ld = -10.5555545l;
-	ft_putendl("\nInput: %.18Lf");
+	ft_putendl("\nInput: %.17Lf");
 	ft_putendl("Fractional: .5555545l\n");
 	while (ld < 0)
 	{

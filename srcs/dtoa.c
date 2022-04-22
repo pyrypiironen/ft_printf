@@ -38,7 +38,7 @@ char	*dtoa(int precision, t_struct *d)
 	integral = ft_strduprev(arr);
 	fractional = fractional_part(d->arg_f, precision, d);
 	check_fractional(fractional);
-	return (ft_strjoin(integral, fractional));
+	return (ft_strjoin_free(integral, fractional));
 	// THERE IS MEMORY LEAK NOW
 }
 
@@ -46,7 +46,7 @@ char	*fractional_part(long double n, int precision, t_struct *d)
 {
 	char				arr[precision + 2];
 	int					i;
-	long long	k;
+	long long			k;
 
 	if (precision == 0 && d->hash == 1)
 		return (ft_strdup("."));
