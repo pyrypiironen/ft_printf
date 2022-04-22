@@ -66,16 +66,19 @@ typedef struct		s_struct
 
 int		ft_printf(const char *format, ...);
 int		read_format(const char *format, va_list ap, t_struct *d);
+void	check_conversion(const char *format, va_list ap, t_struct *d);
 
 //		* * * * * READ SPECIFIERS * * * * *
 int		is_conversion(const char *format, t_struct *d);
 void	flags(const char *format, t_struct *d);
 void	width(const char *format, va_list ap, t_struct *d);
+int		width_numbers(const char *format, t_struct *d);
 void	precision(const char *format, va_list ap, t_struct *d);
 void	modifiers(const char *format, t_struct *d);
 
 //		* * * * * CONVERSION TABLE * * * * *
 void	conversion(const char *format, va_list ap, t_struct *d);
+void	conversion_bonus(const char *format, va_list ap, t_struct *d);
 
 //		* * * * * SOME CONVERTS * * * * *
 void	convert_octal(va_list ap, t_struct *d);
@@ -115,6 +118,7 @@ void	print_len_str(t_struct *d);
 //		* * * * * DOUBLE * * * * *
 void	convert_double(va_list ap, t_struct *d);
 void	rounders(t_struct *d);
+void	bankers_rounding(t_struct *d, long double banker, char *alpha);
 //		* * HELPERS DOUBLE * *
 void	read_arg_double(t_struct *d, va_list ap);
 int		print_len_double(t_struct *d);
@@ -124,6 +128,7 @@ int		is_negative(double nbr);
 //		* * DTOA * *
 char	*dtoa(int precision, t_struct *d);
 char	*fractional_part(long double n, int precision, t_struct *d);
+char	*create_fractional(char *arr, long double n, int precision);
 void	check_fractional(char *fractional);
 
 //		* * * * * BINARY * * * * *

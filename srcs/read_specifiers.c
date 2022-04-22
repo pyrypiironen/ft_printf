@@ -12,22 +12,6 @@
 
 #include "../includes/ft_printf.h"
 
-int is_conversion(const char *format, t_struct *d)
-{
-	int save;
-
-	save = d->pos;
-	while (ft_strchr(SPECIFIERS, format[d->pos]) != NULL)
-		d->pos++;
-	if (ft_strchr(CONVERSION, format[d->pos]) != NULL)
-	{
-		d->pos = save;
-		return (1);
-	}
-	else
-		return (0);
-}
-
 void	flags(const char *format, t_struct *d)
 {
 	while (ft_strchr(FLAGS, format[d->pos]) != NULL)
@@ -51,22 +35,15 @@ void	flags(const char *format, t_struct *d)
 void	width(const char *format, va_list ap, t_struct *d)
 {
 	int		i;
-	char	str[20];
 
-	i = 0;
-	while (ft_strchr("0123456789", format[d->pos]) != NULL)
-	{
-		str[i] = format[d->pos];
-		i++;
-		d->pos++;
-	}
-	str[i] = '\0';
-	if (i == 0)	//if there is no width given by numbers check asterix
+	i = width_numbers(format, d);
+	// If there is no width given by numbers check wildcards.
+	if (i == 0)
 	{
 		if (format[d->pos] == '*')
 		{
 			d->width = va_arg(ap, int);
-			if(d->width < 0)
+			if (d->width < 0)
 			{
 				d->width *= -1;
 				d->minus = 1;
@@ -74,8 +51,13 @@ void	width(const char *format, va_list ap, t_struct *d)
 				d->pos++;
 		}
 	}
-	if (i > 0)
-		d->width = ft_atoi(str);
+	width_numbers(format, d);
+}
+
+int	width_numbers(const char *format, t_struct *d)
+{
+	int		i;
+	char	str[20];
 
 	i = 0;
 	while (ft_strchr("0123456789", format[d->pos]) != NULL)
@@ -87,13 +69,14 @@ void	width(const char *format, va_list ap, t_struct *d)
 	str[i] = '\0';
 	if (i > 0)
 		d->width = ft_atoi(str);
+	return (i);
 }
 
 void	precision(const char *format, va_list ap, t_struct *d)
 {
 	int		i;
 	char	str[20];
-	
+
 	i = 0;
 	if (format[d->pos] == '.')
 	{
@@ -104,7 +87,8 @@ void	precision(const char *format, va_list ap, t_struct *d)
 			i++;
 			d->pos++;
 		}
-		if (i == 0)	//if there is no precision given by numbers check asterix
+		//If there is no precision given by numbers check asterix.
+		if (i == 0)
 		{
 			if (format[d->pos] == '*')
 			{
@@ -145,7 +129,7 @@ void	modifiers(const char *format, t_struct *d)
 	}
 	else if (format[d->pos] == 'l')
 	{
- 		d->mod_l = 1;
+		d->mod_l = 1;
 		d->pos++;
 	}
 	else if (format[d->pos] == 'L')

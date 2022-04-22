@@ -23,7 +23,7 @@ void	convert_int(va_list ap, t_struct *d)
 	d->print_len = print_len(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
-		exit(0);
+		exit(-1);
 	print[d->print_len] = '\0';
 	fill_print(d, print);
 	plant_arg(d, print, input);
@@ -70,11 +70,7 @@ void	plant_arg(t_struct *d, char *print, char *input)
 
 	// Plant argument. If argument value is negative, plant it without minus.
 	while (d->input_len >= 0 && input[d->input_len] != '-')
-	{
-		print[d->print_len] = input[d->input_len];
-		d->input_len--;
-		d->print_len--;
-	}
+		print[d->print_len--] = input[d->input_len--];
 	// Plant plus if there is '+' flag and argument is non-negative.
 	i = d->print_len;
 	if (d->plus == 1 && d->arg >= 0)

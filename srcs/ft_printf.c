@@ -21,7 +21,7 @@ int	ft_printf(const char *format, ...)
 
 	if ((format[0] == '%' && format[1] == '\0') || format[0] == '\0')
 		return (0);
-	data = (t_struct*)malloc(sizeof(t_struct));
+	data = (t_struct *)malloc(sizeof(t_struct));
 	if (data == NULL)
 		return (0);
 	set_struct(data);
@@ -32,7 +32,7 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int read_format(const char *format, va_list ap, t_struct *d)
+int	read_format(const char *format, va_list ap, t_struct *d)
 {
 	while (format[d->pos] != '\0')
 	{
@@ -48,22 +48,25 @@ int read_format(const char *format, va_list ap, t_struct *d)
 			d->res++;
 		}
 		else
-		{
-			d->pos++;
-			if (is_conversion(format, d) == 1)
-			{
-				flags(format, d);
-				width(format, ap, d);
-				precision(format, ap, d);
-				modifiers(format, d);
-				conversion(format, ap, d);
-			}
-			else
-				d->pos--;
-		}
+			check_conversion(format, ap, d);
 		d->pos++;
-		reset_struct(d);
 	}
 	write(1, &d->print, d->ppos);
 	return (d->res);
+}
+
+void	check_conversion(const char *format, va_list ap, t_struct *d)
+{
+	d->pos++;
+	if (is_conversion(format, d) == 1)
+	{
+		flags(format, d);
+		width(format, ap, d);
+		precision(format, ap, d);
+		modifiers(format, d);
+		conversion(format, ap, d);
+		reset_struct(d);
+	}
+	else
+		d->pos--;
 }

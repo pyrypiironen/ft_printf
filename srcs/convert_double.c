@@ -28,7 +28,7 @@ void	convert_double(va_list ap, t_struct *d)
 	d->print_len = print_len_double(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
-		exit(0);
+		exit(-1);
 	print[d->print_len] = '\0';
 	fill_print_double(d, print);
 	plant_arg_double(d, print, input);
@@ -41,49 +41,46 @@ void	convert_double(va_list ap, t_struct *d)
 
 void	rounders(t_struct *d)
 {
-	long double	rounding;
-	long double	banker;
-	char		*alpha;//not memory allocated
 	int			i;
 	int			j;
+	long double	banker;
+	char		*alpha;
 
 	i = 0;
 	j = 0;
 	banker = d->arg_f;
 	alpha = fractional_part(d->arg_f, 19, d);
-	if (alpha != '\0')
-		i = ft_strlen(alpha) - 1;
 	while (j < d->padding)
 	{
 		banker *= 10;
 		j++;
 	}
 	j = 0;
-	while (j <= d->padding)// && j < 3)
+	while (j <= d->padding && j < 19)
 	{
-		int k;
-		k = 0;
-		while (k < 18)
-		{
-			alpha[k] = alpha[k + 1]; 
-			k++;
-		}
+		i = -1;
+		while (++i < 18)
+			alpha[i] = alpha[i + 1];
 		alpha[18] = '0';
 		j++;
 	}
-	//printf("Banker: %Lf\n", banker);
-	//printf("Alpha: %s\n",alpha);
+	bankers_rounding(d, banker, alpha);
+}
+
+void	bankers_rounding(t_struct *d, long double banker, char *alpha)
+{
+	long double	rounding;
+	int			i;
+
 	rounding = 0.5;
 	i = 0;
 	if ((ft_strncmp(alpha, "4999999", 7) == 0 || \
 		ft_strcmp(alpha, "50000000000000000000") == 0) && \
 		((long long)banker % 2 == 0) && d->padding < 3)
 		rounding = -0.25;
-	else if (ft_strncmp(alpha, "4999999", 7) == 0\
-		 && \
-		((long long)banker % 2 == 0) && d->mod_L == 1)
+	else if (ft_strncmp(alpha, "4999999", 7) == 0 \
+			&& ((long long)banker % 2 == 0) && d->mod_L == 1)
 		rounding = -0.25;
-	//
 	if (d->arg_f < 0)
 		rounding *= -1;
 	while (i < d->padding)
@@ -91,9 +88,7 @@ void	rounders(t_struct *d)
 		rounding /= 10.0;
 		i++;
 	}
-	//printf("arg before rounding: %.19Lf\n", d->arg_f);
 	d->arg_f += rounding;
-	//printf("arg after rounding:  %.19Lf\n", d->arg_f);
 }
 
 //OLD VERSION

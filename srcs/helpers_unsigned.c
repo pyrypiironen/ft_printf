@@ -30,7 +30,7 @@ int	print_len_unsigned(t_struct *d, int len)
 {
 	// Count space for '0' if conversion type is 'o', argument value is non-zero
 	// and there is '#' flag.
-	if (d->hash == 1 && d->conv_o == 1 && d->arg_o != 0)						//hox
+	if (d->hash == 1 && d->conv_o == 1 && d->arg_o != 0)
 		len++;
 	// If padding is longer than len, use it as len.
 	if (d->padding > len)

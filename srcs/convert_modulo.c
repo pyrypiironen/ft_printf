@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-void	convert_modulo(t_struct *d) // 26 lines
+void	convert_modulo(t_struct *d)
 {
 	char	*print;
 	int		i;
@@ -30,8 +30,7 @@ void	convert_modulo(t_struct *d) // 26 lines
 		if (d->zero == 1 && d->minus == 0)
 			print[i] = '0';
 		else
-			print[i] = ' ';
-		i++;
+			print[i++] = ' ';
 	}
 	if (d->minus == 0)
 		print[d->print_len - 1] = '%';

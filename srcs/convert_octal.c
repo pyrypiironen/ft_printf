@@ -24,7 +24,7 @@ void	convert_octal(va_list ap, t_struct *d)
 	d->print_len = print_len_unsigned(d, d->input_len);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
-		exit(0);
+		exit(-1);
 	print[d->print_len] = '\0';
 	fill_print(d, print);
 	plant_arg_unsigned(d, print, input);

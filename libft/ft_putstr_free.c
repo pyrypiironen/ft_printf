@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers_print.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_free.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppiirone <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 14:58:46 by ppiirone          #+#    #+#             */
-/*   Updated: 2022/04/20 14:58:48 by ppiirone         ###   ########.fr       */
+/*   Created: 2022/04/22 15:54:05 by ppiirone          #+#    #+#             */
+/*   Updated: 2022/04/22 15:54:06 by ppiirone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
-void	add_to_print(char *print, t_struct *d)
+void	ft_putstr_free(char *s)
 {
 	int	i;
-	int	len;
 
-	i = 0;
-	len = ft_strlen(print);
-	if (d->ppos + len >= 420)
-	{
-		write(1, &d->print, d->ppos);
-		d->ppos = 0;
-	}
-	while (i < len)
-	{
-		d->print[d->ppos] = print[i];
-		d->ppos++;
-		i++;
-	}
-}
-
-void	print_it(t_struct *d)
-{
-	write(1, &d->print, d->ppos);
-	d->ppos = 0;
+	i = ft_strlen(s);
+	write(1, s, i);
+	free(s);
 }

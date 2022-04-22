@@ -45,11 +45,8 @@ void	plant_arg_double(t_struct *d, char *print, char *input)
 
 	// Plant argument. If argument value is negative, plant it without minus.
 	while (d->input_len >= 0 && input[d->input_len] != '-')
-	{
-		print[d->print_len] = input[d->input_len];
-		d->input_len--;
-		d->print_len--;
-	}
+		print[d->print_len--] = input[d->input_len--];
+
 	// Plant plus if there is '+' flag and argument is non-negative.
 	i = d->print_len;
 	if (d->plus == 1 && d->s_pad == 0)

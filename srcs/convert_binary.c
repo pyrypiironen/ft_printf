@@ -22,7 +22,7 @@ void	convert_binary(const char *format, va_list ap, t_struct *d)
 	print_len_binary(d);
 	print = (char *)malloc(sizeof(*print) * d->print_len + 1);
 	if (print == NULL)
-		exit(0);
+		exit(-1);
 	print[d->print_len] = '\0';
 	fill_print_binary(d, print, input);
 	adjust_left(d, print);

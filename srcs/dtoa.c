@@ -39,27 +39,41 @@ char	*dtoa(int precision, t_struct *d)
 	fractional = fractional_part(d->arg_f, precision, d);
 	check_fractional(fractional);
 	return (ft_strjoin_free(integral, fractional));
-	// THERE IS MEMORY LEAK NOW
 }
 
 char	*fractional_part(long double n, int precision, t_struct *d)
 {
-	char				arr[precision + 2];
-	int					i;
-	long long			k;
+	char	*arr;
+	char	*array;
+	int		i;
 
+	array = NULL;
+	arr = (char *)malloc(sizeof(*arr) * precision + 2 + 1);
+	if (arr == NULL)
+		exit(-1);
 	if (precision == 0 && d->hash == 1)
 		return (ft_strdup("."));
 	if (precision == 0)
-		return NULL;
+		return (NULL);
 	i = 0;
 	// Convert double value under one to fix rounding match up real printf.
 	n -= (long long)n;
 	while (i < precision)
 	{
-		n *= 10; 
+		n *= 10;
 		i++;
 	}
+	array = create_fractional(arr, n, precision);
+	free(arr);
+	return (array);
+}
+
+char	*create_fractional(char *arr, long double n, int precision)
+{
+	int			i;
+	long long	k;
+	char		*array;
+
 	i = 0;
 	while (precision > 0)
 	{
@@ -75,15 +89,15 @@ char	*fractional_part(long double n, int precision, t_struct *d)
 		precision--;
 	}
 	arr[i] = '.';
-	i++;
-	arr[i] = '\0';
-	return (ft_strduprev(arr));
+	arr[i + 1] = '\0';
+	array = ft_strduprev(arr);
+	return (array);
 }
 
 void	check_fractional(char *fractional)
 {
 	int	i;
-	int len;
+	int	len;
 
 	i = 1;
 	if (fractional == NULL)
@@ -94,9 +108,9 @@ void	check_fractional(char *fractional)
 	else
 	{
 		while (i < len)
-			{
-				fractional[i] = '0';
-				i++;
-			}
+		{
+			fractional[i] = '0';
+			i++;
+		}
 	}
 }
