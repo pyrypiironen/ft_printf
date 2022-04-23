@@ -38,6 +38,18 @@ void	set_struct(t_struct *d)
 	d->arg = -1;
 	d->arg_o = 0;
 	d->res = 0;
+	set_colors(d);
+}
+
+void	set_colors(t_struct *d)
+{
+	d->green = 0;
+	d->red = 0;
+	d->yellow = 0;
+	d->blue = 0;
+	d->blue2 = 0;
+	d->purple = 0;
+	d->black = 0;
 }
 
 void	reset_struct(t_struct *d)

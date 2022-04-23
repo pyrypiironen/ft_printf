@@ -31,6 +31,7 @@ void	test_modulo();
 void	test_asterix();
 void	test_binary();
 void	test_rounding_heavy();
+void	test_colors();
 void	filechecker();
 
 #endif

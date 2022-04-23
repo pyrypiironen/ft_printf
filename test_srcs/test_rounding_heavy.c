@@ -86,15 +86,15 @@ void	test_rounding_heavy()
 		d -= 24;
 	}
 
-	// HARD: 15 DIGITS WITH PRECISION OF 18
+	// HARD: 15 DIGITS WITH PRECISION OF 17
 	ft_putendl("\n\n * * * * * 15 digits with precision of 17 (4200 to -4200 minus by 420) * * * * *");
 	d = 2400.555555555555545;
 	ft_putendl("\nInput: %.18f");
 	ft_putendl("Fractional: .555555555555545\n");
 	while (d > -2401)
 	{
-		my_return = ft_printf("My ft_printf: %.18f $\n", d);
-		real_return = printf("Real  printf: %.18f $\n", d);
+		my_return = ft_printf("My ft_printf: %.16f $\n", d);
+		real_return = printf("Real  printf: %.16f $\n", d);
 		ft_putendl("");
 		if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);

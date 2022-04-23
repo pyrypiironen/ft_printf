@@ -22,8 +22,10 @@ int	ft_printf(const char *format, ...)
 		return (0);
 	data = (t_struct *)malloc(sizeof(t_struct));
 	if (data == NULL)
-		return (0);
+		return (-1);
 	set_struct(data);
+	if (format[0] == '{')
+		read_color(format, data);
 	va_start(ap, format);
 	ret = read_format(format, ap, data);
 	va_end(ap);
@@ -50,7 +52,8 @@ int	read_format(const char *format, va_list ap, t_struct *d)
 			check_conversion(format, ap, d);
 		d->pos++;
 	}
-	write(1, &d->print, d->ppos);
+	print_it(d);
+	//write(1, &d->print, d->ppos);
 	return (d->res);
 }
 

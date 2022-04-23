@@ -24,7 +24,7 @@
 typedef struct		s_struct
 {
 	//					PRINTING
-	char				print[420];
+	char				print[440];
 	int					ppos;
 	//					POSITION on format string
 	int					pos;
@@ -59,6 +59,14 @@ typedef struct		s_struct
 	long long			arg;
 	unsigned long long	arg_o;
 	long double			arg_f;
+	//					COLORS
+	int					green;
+	int					red;
+	int					yellow;
+	int					blue;
+	int					blue2;
+	int					purple;
+	int					black;
 	//					RETURN (value)
 	int					res;
 }						t_struct;
@@ -141,10 +149,18 @@ char	*prepare_input(const char *format, va_list ap, t_struct *d);
 
 //		* * * * *STRUCT SETTINGS * * * * *
 void	set_struct(t_struct *d);
+void	set_colors(t_struct *d);
 void	reset_struct(t_struct *d);
 
 //		* * * * * PRINT * * * * *
 void	add_to_print(char *print, t_struct *d);
 void	print_it(t_struct *d);
+
+//		* * * * * COLORS * * * * *
+void	read_color(const char *format, t_struct *d);
+void	is_color_1(const char *format, t_struct *d);
+void	is_color_2(const char *format, t_struct *d);
+void	set_color_start(t_struct *d);
+void	set_color_end(t_struct *d);
 
 #endif

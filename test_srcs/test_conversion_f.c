@@ -335,6 +335,12 @@ void	test_conversion_f()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_putendl("\nInput: %.35Lf");
+	my_return = ft_printf("My ft_printf:  %.17Lf $\n", 42.123456789012345678901234567890l);
+	real_return = printf("Real  printf:  %.17Lf $\n",  42.123456789012345678901234567890l);
+	if(my_return != real_return)
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
 	// SOME EXTRAS
 	ft_putendl("\n\n * * * * * Some extra tests for hard cases:  * * * * *");
 

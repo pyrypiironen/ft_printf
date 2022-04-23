@@ -34,6 +34,13 @@ void	add_to_print(char *print, t_struct *d)
 
 void	print_it(t_struct *d)
 {
+	if (d->green || d->red || d->black || d->yellow || d->blue || d->purple \
+		|| d->blue2)
+	{
+		set_color_start(d);
+		set_color_end(d);
+		d->ppos += 11;
+	}
 	write(1, &d->print, d->ppos);
 	d->ppos = 0;
 }
