@@ -31,7 +31,7 @@ typedef struct		s_struct
 	//					CONVERSION TYPE
 	int					conv_o;
 	int					conv_x;
-	int					conv_X;
+	int					conv_big_x;
 	int					conv_p;
 	//					FLAGS
 	int					hash;
@@ -51,7 +51,7 @@ typedef struct		s_struct
 	int					mod_hh;
 	int					mod_l;
 	int					mod_ll;
-	int					mod_L;
+	int					mod_big_l;
 	//					PRINTING (value)
 	int					input_len;
 	int					print_len;
@@ -106,7 +106,7 @@ void	to_lowercase(char *print);
 //		* * * * * HELPERS UNSIGNED * * * * *
 void	read_arg_unsigned(t_struct *d, va_list ap);
 int		print_len_unsigned(t_struct *d, int len);
-void	plant_arg_unsigned(t_struct *d, char *print, char  *input);
+void	plant_arg_unsigned(t_struct *d, char *print, char *input);
 void	zero_precision_check_unsigned(char *print, t_struct *d);
 
 //		* * * * * SIGNED DESIMAL * * * * *
@@ -118,7 +118,7 @@ void	zero_precision_check(t_struct *d, char *print);
 
 //		* * * * * CHARACTER * * * * *
 void	convert_char(va_list ap, t_struct *d);
-void	adjust_left_char(t_struct *d ,char *print);
+void	adjust_left_char(t_struct *d, char *print);
 void	fill_print_char(t_struct *d, char *print);
 
 //		* * * * * CHARACTER STRING * * * * *
@@ -134,7 +134,7 @@ void	bankers_rounding(t_struct *d, long double banker, char *alpha);
 void	read_arg_double(t_struct *d, va_list ap);
 int		print_len_double(t_struct *d);
 void	fill_print_double(t_struct *d, char *print);
-void	plant_arg_double(t_struct *d, char *print, char  *input);
+void	plant_arg_double(t_struct *d, char *print, char *input);
 int		is_negative(double nbr);
 //		* * DTOA * *
 char	*dtoa(int precision, t_struct *d);

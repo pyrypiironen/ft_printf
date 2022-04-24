@@ -36,7 +36,7 @@ void	modifiers(const char *format, t_struct *d)
 	}
 	else if (format[d->pos] == 'L')
 	{
-		d->mod_L = 1;
+		d->mod_big_l = 1;
 		d->pos++;
 	}
 }

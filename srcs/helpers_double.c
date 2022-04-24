@@ -14,7 +14,7 @@
 
 void	read_arg_double(t_struct *d, va_list ap)
 {
-	if (d->mod_L == 1)
+	if (d->mod_big_l == 1)
 		d->arg_f = (long double)va_arg(ap, long double);
 	else
 		d->arg_f = (double)va_arg(ap, double);

@@ -37,7 +37,7 @@ int	print_len_unsigned(t_struct *d, int len)
 		len = d->padding;
 	// Count space for prefix if conversion type is 'x' or 'X',
 	// result is non-zero and there is '#' flag. Or if conversion type is 'p'.
-	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0) \
+	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_big_x == 1) && d->arg_o != 0) \
 		|| d->conv_p == 1)
 		len += 2;
 	// If minimum field width is longer than len, use it as len.
@@ -69,7 +69,7 @@ void	plant_arg_unsigned(t_struct *d, char *print, char *input)
 		d->print_len = 1;
 	// Plant prefix if conversion type is 'x' or 'X', result is non-zero
 	// and there is '#' flag.  Or if conversion type is 'p'.
-	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_X == 1) && d->arg_o != 0) \
+	if ((d->hash == 1 && (d->conv_x == 1 || d->conv_big_x == 1) && d->arg_o != 0) \
 		|| d->conv_p == 1)
 	{
 		print[d->print_len] = 'X';

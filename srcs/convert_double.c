@@ -80,7 +80,7 @@ void	bankers_rounding(t_struct *d, long double banker, char *alpha)
 		((long long)banker % 2 == 0) && d->padding < 3)
 		d->rounding = -0.25;
 	else if (ft_strncmp(alpha, "4999999", 7) == 0 \
-			&& ((long long)banker % 2 == 0) && d->mod_L == 1)
+			&& ((long long)banker % 2 == 0) && d->mod_big_l == 1)
 		d->rounding = -0.25;
 	if (d->arg_f < 0)
 		d->rounding *= -1;

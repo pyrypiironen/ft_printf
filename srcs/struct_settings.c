@@ -17,7 +17,7 @@ void	set_struct(t_struct *d)
 	d->ppos = 0;
 	d->conv_o = 0;
 	d->conv_x = 0;
-	d->conv_X = 0;
+	d->conv_big_x = 0;
 	d->conv_p = 0;
 	d->pos = 0;
 	d->hash = 0;
@@ -34,7 +34,7 @@ void	set_struct(t_struct *d)
 	d->mod_hh = 0;
 	d->mod_l = 0;
 	d->mod_ll = 0;
-	d->mod_L = 0;
+	d->mod_big_l = 0;
 	d->arg = -1;
 	d->arg_o = 0;
 	d->res = 0;
@@ -56,7 +56,7 @@ void	reset_struct(t_struct *d)
 {
 	d->conv_o = 0;
 	d->conv_x = 0;
-	d->conv_X = 0;
+	d->conv_big_x = 0;
 	d->conv_p = 0;
 	d->hash = 0;
 	d->zero = 0;
@@ -71,7 +71,7 @@ void	reset_struct(t_struct *d)
 	d->mod_hh = 0;
 	d->mod_l = 0;
 	d->mod_ll = 0;
-	d->mod_L = 0;
+	d->mod_big_l = 0;
 	d->arg = -1;
 	d->arg_o = 0;
 }

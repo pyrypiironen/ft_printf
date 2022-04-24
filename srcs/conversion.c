@@ -25,7 +25,7 @@ void	conversion(const char *format, va_list ap, t_struct *d)
 		if (format[d->pos] == 'x')
 			d->conv_x = 1;
 		else if (format[d->pos] == 'X')
-			d->conv_X = 1;
+			d->conv_big_x = 1;
 		convert_hexadecimal(ap, d);
 	}
 	else if (format[d->pos] == 'c')
