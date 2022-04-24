@@ -18,7 +18,7 @@ int main()
 	//  test_conversion_di();
 	//  test_conversion_o();
 	//  test_conversion_u();
-	//  test_conversion_x();
+	 test_conversion_x();
 	//  test_conversion_c();
 	//  test_conversion_s();
 	//  test_conversion_p();
@@ -26,7 +26,7 @@ int main()
 
 	// // TEST FLOATS
 	// test_conversion_f();
-	 test_rounding_heavy();
+	// test_rounding_heavy();
 
 	//BONUS PARTS
 	// test_asterix();
