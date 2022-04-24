@@ -221,9 +221,9 @@ void	test_rounding_heavy()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16f");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147483647.8801045124499999999);
-	real_return = printf("Real  printf:  %.16Lf $\n",  2147483647.8801045124499999999);
+	ft_putendl("\nInput: %.16Lf");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", -2147483647.8801045124499999999l);
+	real_return = printf("Real  printf:  %.16Lf $\n",  -2147483647.8801045124499999999l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
@@ -233,21 +233,21 @@ void	test_rounding_heavy()
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16Lf");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147477647.88990499999999l);
-	real_return = printf("Real  printf:  %.16Lf $\n",  2147477647.88990499999999l);
+	ft_putendl("\nInput: %.16f");
+	my_return = ft_printf("My ft_printf:  %.16f $\n", 2147477647.88990499999999);
+	real_return = printf("Real  printf:  %.16f $\n",  2147477647.88990499999999);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
 	ft_putendl("\nInput: %.16f");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147477647.880125512449999);
-	real_return = printf("Real  printf:  %.16Lf $\n",  2147477647.880125512449999);
+	my_return = ft_printf("My ft_printf:  %.16f $\n", 2147477647.880125512449999);
+	real_return = printf("Real  printf:  %.16f $\n",  2147477647.880125512449999);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
-	ft_putendl("\nInput: %.16Lf");
-	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 52147477647.8802445124499999999l);
-	real_return = printf("Real  printf:  %.16Lf $\n",  52147477647.8802445124499999999l);
+	ft_putendl("\nInput: %.16f");
+	my_return = ft_printf("My ft_printf:  %.16f $\n", 52147477647.8802445124499999999);
+	real_return = printf("Real  printf:  %.16f $\n",  52147477647.8802445124499999999);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 

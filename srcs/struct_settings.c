@@ -37,6 +37,7 @@ void	set_struct(t_struct *d)
 	d->mod_big_l = 0;
 	d->arg = -1;
 	d->arg_o = 0;
+	d->rounding = 0.0;
 	d->res = 0;
 	set_colors(d);
 }
@@ -74,4 +75,5 @@ void	reset_struct(t_struct *d)
 	d->mod_big_l = 0;
 	d->arg = -1;
 	d->arg_o = 0;
+	d->rounding = 0.0;
 }
