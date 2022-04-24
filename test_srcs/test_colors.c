@@ -42,7 +42,7 @@ void	test_colors()
 		ft_printf("{purple} *\n\n");
 	//
 
-
+	//ALL COLORS WITH STRING
 	ft_printf("{green}Hello %s!\n", "world");
 	ft_printf("{red}People like %s.\n", "colors");
 	ft_printf("{yellow}So %s %s colors for you!\n", "here", "is");
@@ -51,14 +51,27 @@ void	test_colors()
 	ft_printf("{purple}Purple is %s of money.\n", "color");
 	ft_printf("{blue}Do you know %s panthera uncia is?\n\n", "what animal");
 
-	ft_printf("{yellow}Last test is check if returns is still ok:\n\n");
-	
-	my_return = ft_printf("{purple}Hello %s!\n", "world");
-	real_return = ft_printf("Hello %s!\n", "world");
-	
-	ft_printf("{blue}\nMy ft_printf returns %d and the real printf returns \ %d. \n" \
-			, my_return, real_return);
+	//DIFFERENT LENGTH MODIFIERS
+	ft_printf("{yellow}Tests for different length modifiers:\n\n");
 
+	ft_printf("{green}Testing int %d.\n", 42);
+	ft_printf("{green}Testing octal %o.\n", 42);
+	ft_printf("{green}Testing unsigned int %u.\n", 42);
+	ft_printf("{green}Testing hexadecimal %x.\n", 42);
+	ft_printf("{green}Testing double %f.\n\n", 42.42);
+
+
+	//RETURN
+	ft_printf("{yellow}Last test is check if returns is still ok (with two conversion):\n\n");
+	
+	my_return = ft_printf("{purple}Hello %s %s!\n", "world", "and universe");
+	real_return = ft_printf("Hello %s %s!\n", "world", "and universe");
+	
+	ft_printf("{green}\nMy ft_printf returns %d and the real printf returns \ %d. \n" \
+			, my_return, real_return);
+	
+
+	//FAKE TESTS
 	ft_printf("{yellow}\nOne more fake test:\n\n");
 
 	ft_printf("Testing something:\n");

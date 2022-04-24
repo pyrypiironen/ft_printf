@@ -17,7 +17,6 @@ void	convert_hexadecimal(va_list ap, t_struct *d)
 	char		*input;
 	char		*print;
 
-	print_it(d);
 	read_arg_unsigned(d, ap);
 	input = ft_itoa_base(d->arg_o, 16);
 	d->input_len = ft_strlen(input);
@@ -32,7 +31,7 @@ void	convert_hexadecimal(va_list ap, t_struct *d)
 	if (d->conv_x == 1)
 		to_lowercase(print);
 	zero_precision_check_unsigned(print, d);
-	ft_putstr(print);
+	add_to_print(print, d);
 	d->res += ft_strlen(print);
 	free(input);
 	free(print);

@@ -21,14 +21,22 @@ void	add_to_print(char *print, t_struct *d)
 	len = ft_strlen(print);
 	if (d->ppos + len >= 420)
 	{
-		write(1, &d->print, d->ppos);
-		d->ppos = 0;
+		print_it(d);
 	}
 	while (i < len)
 	{
-		d->print[d->ppos] = print[i];
-		d->ppos++;
-		i++;
+		while (i < 420 && i < len)
+		{
+			d->print[d->ppos] = print[i];
+			d->ppos++;
+			i++;
+		}
+		if (i == 420)
+		{
+			print_it(d);
+			len -= i;
+			i = 0;
+		}
 	}
 }
 

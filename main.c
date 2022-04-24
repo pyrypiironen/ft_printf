@@ -31,7 +31,7 @@ int main()
 	//BONUS PARTS
 	// test_asterix();
 	// test_binary();
-	// test_colors();
+	test_colors();
 
 
 	// FILECHECKER
