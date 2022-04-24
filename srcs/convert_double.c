@@ -70,26 +70,26 @@ void	rounders(t_struct *d)
 
 void	bankers_rounding(t_struct *d, long double banker, char *alpha)
 {
-	long double	rounding;
+	//long double	rounding;
 	int			i;
 
-	rounding = 0.5;
+	d->rounding = 0.5;
 	i = 0;
 	if ((ft_strncmp(alpha, "4999999", 7) == 0 || \
 		ft_strcmp(alpha, "50000000000000000000") == 0) && \
 		((long long)banker % 2 == 0) && d->padding < 3)
-		rounding = -0.25;
+		d->rounding = -0.25;
 	else if (ft_strncmp(alpha, "4999999", 7) == 0 \
 			&& ((long long)banker % 2 == 0) && d->mod_L == 1)
-		rounding = -0.25;
+		d->rounding = -0.25;
 	if (d->arg_f < 0)
-		rounding *= -1;
+		d->rounding *= -1;
 	while (i < d->padding)
 	{
-		rounding /= 10.0;
+		d->rounding /= 10.0;
 		i++;
 	}
-	d->arg_f += rounding;
+	d->arg_f += d->rounding;
 }
 
 //OLD VERSION

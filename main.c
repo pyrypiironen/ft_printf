@@ -26,12 +26,12 @@ int main()
 
 	// // TEST FLOATS
 	// test_conversion_f();
-	// test_rounding_heavy();
+	 test_rounding_heavy();
 
 	//BONUS PARTS
 	// test_asterix();
 	// test_binary();
-	test_colors();
+	// test_colors();
 
 
 	// FILECHECKER

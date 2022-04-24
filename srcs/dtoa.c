@@ -57,7 +57,9 @@ char	*fractional_part(long double n, int precision, t_struct *d)
 		return (NULL);
 	i = 0;
 	// Convert double value under one to fix rounding match up real printf.
+	n -= d->rounding;
 	n -= (long long)n;
+	n += d->rounding;
 	while (i < precision)
 	{
 		n *= 10;

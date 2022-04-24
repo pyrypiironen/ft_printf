@@ -59,6 +59,7 @@ typedef struct		s_struct
 	long long			arg;
 	unsigned long long	arg_o;
 	long double			arg_f;
+	long double			rounding;
 	//					COLORS
 	int					green;
 	int					red;

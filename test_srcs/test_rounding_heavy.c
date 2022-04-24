@@ -211,4 +211,38 @@ void	test_rounding_heavy()
 	real_return = printf("Real  printf:  %Lf $\n",  2.8801045124499999999l);
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 	
+	// SOME BIG VALUES WITH BIG PRECISION
+	ft_putendl("\n\n * * * * * Some big values with big precision * * * * *");
+
+	ft_putendl("\nInput: %.16Lf");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147483647.8801045124499999999l);
+	real_return = printf("Real  printf:  %.16Lf $\n",  2147483647.8801045124499999999l);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.16f");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147483647.8801045124499999999);
+	real_return = printf("Real  printf:  %.16Lf $\n",  2147483647.8801045124499999999);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.16Lf");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 52147483647.8801045124499999999l);
+	real_return = printf("Real  printf:  %.16Lf $\n",  52147483647.8801045124499999999l);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.16Lf");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147477647.88990499999999l);
+	real_return = printf("Real  printf:  %.16Lf $\n",  2147477647.88990499999999l);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.16f");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 2147477647.880125512449999);
+	real_return = printf("Real  printf:  %.16Lf $\n",  2147477647.880125512449999);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+	ft_putendl("\nInput: %.16Lf");
+	my_return = ft_printf("My ft_printf:  %.16Lf $\n", 52147477647.8802445124499999999l);
+	real_return = printf("Real  printf:  %.16Lf $\n",  52147477647.8802445124499999999l);
+		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+
+
 }
