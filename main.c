@@ -26,7 +26,7 @@ int main()
 
 	// // TEST FLOATS
 	// test_conversion_f();
-	 test_rounding_heavy();
+	// test_rounding_heavy();
 
 	//BONUS PARTS
 	// test_asterix();
@@ -35,7 +35,7 @@ int main()
 
 
 	// FILECHECKER
-	// filechecker();
+	 filechecker();
 
 
 
