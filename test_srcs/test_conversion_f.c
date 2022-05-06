@@ -316,6 +316,7 @@ void	test_conversion_f()
 	real_return = printf("Real  printf:  %Lf $\n",  2.5555545l);
 	if(my_return != real_return)
 		printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
+	
 	ft_putendl("\nInput: %.0Lf");
 	my_return = ft_printf("My ft_printf:  %.0Lf $\n", -0.5l);
 	real_return = printf("Real  printf:  %.0Lf $\n", -0.5l);

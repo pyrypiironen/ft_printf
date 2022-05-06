@@ -93,7 +93,6 @@ void	zero_precision_check_unsigned(char *print, t_struct *d)
 		print[i] = ' ';
 		i++;
 	}
-	//
 	if (d->conv_p == 1 && i < 2)
 		i = 2;
 	print[i] = '\0';

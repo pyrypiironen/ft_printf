@@ -48,13 +48,13 @@ char	*fractional_part(long double n, int precision, t_struct *d)
 	int		i;
 
 	array = NULL;
-	arr = (char *)malloc(sizeof(*arr) * precision + 2 + 1);
-	if (arr == NULL)
-		exit(-1);
 	if (precision == 0 && d->hash == 1)
 		return (ft_strdup("."));
 	if (precision == 0)
 		return (NULL);
+	arr = (char *)malloc(sizeof(*arr) * precision + 2 + 1);
+	if (arr == NULL)
+		exit(-1);
 	i = 0;
 	// Convert double value under one to fix rounding match up real printf.
 	n -= d->rounding;

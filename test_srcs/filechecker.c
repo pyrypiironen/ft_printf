@@ -26,8 +26,7 @@ void	filechecker()
 	// if(my_return != real_return)
 	// 	printf("My ft_printf return is %d, but it should be %d.\n", my_return, real_return);
 
+	ft_printf("{gre");
 
-	my_return = ft_printf("Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoirLesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoirLesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoir\n\n\n");
-	real_return = printf("Lesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoirLesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoirLesenfantsnesententpastrestresbonmaiscac'estparcequ'ilsfontcacadansleurculotteetquecen'estvraimentpastrestrespropreNonmongroscoupdec≈M-^Surc'√©taitunsoir\n\n\n");
-	printf("%d and %d\n", my_return, real_return);
+
 }

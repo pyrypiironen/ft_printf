@@ -70,7 +70,6 @@ void	rounders(t_struct *d)
 
 void	bankers_rounding(t_struct *d, long double banker, char *alpha)
 {
-	//long double	rounding;
 	int			i;
 
 	d->rounding = 0.5;
@@ -91,39 +90,3 @@ void	bankers_rounding(t_struct *d, long double banker, char *alpha)
 	}
 	d->arg_f += d->rounding;
 }
-
-//OLD VERSION
-// void	rounders(t_struct *d)
-// {
-// 	long double	rounding;
-// 	char		*alpha;//not memory allocated
-// 	int			i;
-
-// 	i = 0;
-// 	alpha = fractional_part(d->arg_f, 19, d);
-// 	if (alpha != '\0')
-// 		i = ft_strlen(alpha) - 1;
-// 	// Bankers rounding.
-// 	if ((long long)d->arg_f % 2 == 0)
-// 	{
-// 		while (alpha[i] == '9')
-// 			i--;
-// 		if (alpha[i] == '4' && alpha[i - 1] == '4' && i == d->padding + 1)
-// 			return ;
-// 		i = ft_strlen(alpha) - 1;
-// 		while (alpha[i] == '0')
-// 			i--;
-// 		if (alpha[i] == '5' && alpha[i - 1] == '.' && i == d->padding + 1)
-// 			return ;
-// 	}
-// 	rounding = 0.5;
-// 	i = 0;
-// 	if (d->arg_f < 0)
-// 		rounding *= -1;
-// 	while (i < d->padding)
-// 	{
-// 		rounding /= 10.0;
-// 		i++;
-// 	}
-// 	d->arg_f += rounding;
-// }

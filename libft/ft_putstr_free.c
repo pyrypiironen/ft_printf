@@ -17,6 +17,6 @@ void	ft_putstr_free(char *s)
 	int	i;
 
 	i = ft_strlen(s);
-	write(1, &s, i);
+	write(1, s, i);
 	free(s);
 }

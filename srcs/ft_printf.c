@@ -53,7 +53,6 @@ int	read_format(const char *format, va_list ap, t_struct *d)
 		d->pos++;
 	}
 	print_it(d);
-	//write(1, &d->print, d->ppos);
 	return (d->res);
 }
 

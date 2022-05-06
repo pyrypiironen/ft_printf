@@ -21,7 +21,7 @@
 # define FLAGS		"#0-+ "
 # define SPECIFIERS	"#0-+ .*0123456789hlL"
 
-typedef struct		s_struct
+typedef struct s_struct
 {
 	//					PRINTING
 	char				print[440];
@@ -100,7 +100,7 @@ void	convert_modulo(t_struct *d);
 
 //		* * * * * HELPERS COMMON * * * * *
 void	fill_print(t_struct *d, char *print);
-void	adjust_left(t_struct *d ,char *print);
+void	adjust_left(t_struct *d, char *print);
 void	to_lowercase(char *print);
 
 //		* * * * * HELPERS UNSIGNED * * * * *
